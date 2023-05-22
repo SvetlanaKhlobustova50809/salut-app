@@ -1,0 +1,179 @@
+.c-button {
+  display: flex;
+  display: inline-block;
+  font: 400 11px system-ui;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+  margin-top: 20px;
+  text-transform: uppercase;
+}
+
+.btn-group button {
+  background-color: #04AA6D; /* Зеленый фон */
+  border: 1px solid green; /* Зеленая рамка */
+  color: white; /* Белый текст */
+  padding: 50px 50px; /* Некоторый отступ */
+  cursor: pointer; /* Иконка указателя/руки */
+  float: left; /* Выстраиваем кнопки рядом друг с другом */
+  margin-top: 50px;
+  margin-left: 75px;
+  color: #222;
+  font: bold 25px Arial;
+}
+
+.btn-group button:not(:last-child) {
+  border-right: none; /* Исключаем двойную рамку */
+}
+
+/* Сбрасываем обтекание (clearfix hack) */
+.btn-group:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Добавляем фон при наведении курсора */
+.btn-group button:hover {
+  background-color: #00784a;
+}
+
+.btn-group2 button {
+  background-color: #04AA6D; /* Зеленый фон */
+  border: 1px solid green; /* Зеленая рамка */
+  color: white; /* Белый текст */
+  padding: 50px 50px; /* Некоторый отступ */
+  cursor: pointer; /* Иконка указателя/руки */
+  float: left; /* Выстраиваем кнопки рядом друг с другом */
+  margin-top: 50px;
+  margin-left: 75px;
+  color: #222;
+  font: bold 25px Arial;
+
+}
+
+.btn-group2 button:not(:last-child) {
+  border-right: none; /* Исключаем двойную рамку */
+}
+
+/* Сбрасываем обтекание (clearfix hack) */
+.btn-group2:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Добавляем фон при наведении курсора */
+.btn-group2 button:hover {
+  background-color: #00784a;
+}
+
+.cardsOff {
+  width: 340px;
+  height: 300px;
+  background: #a6c19d;
+  font: bold 30px Arial;
+  color: green;
+  margin: 20px;
+  border-radius: 4px;
+  text-align: center;
+  padding: 20px;
+}
+
+.cardsOn {
+  width: 340px;
+  height: 300px;
+  background: #61a4e7;
+  font: bold 30px Arial;
+  color: blue;
+  margin: 20px;
+  border-radius: 4px;
+  text-align: center;
+  padding: 20px;
+}
+
+.cardsButton{
+  width: 150px;
+  padding: 10px;
+  font-size: 20px;
+  background: #a14490;
+  font-weight: bold;
+  border-radius: 50px;
+  text-align: center;
+}
+
+.outer-div
+{
+     padding: 10px;
+}
+.inner-div
+{
+     margin: auto;
+     width: 400px;
+     height: 100px;  
+}
+
+.divModes{
+  margin: auto;
+  width: 300px;
+}
+
+.heading {
+  text-align: center; 
+}
+
+.resbtn{
+  background-color: #04AA6D; /* Зеленый фон */
+  border: 1px solid green; /* Зеленая рамка */
+  color: white; /* Белый текст */
+  padding: 50px 50px; /* Некоторый отступ */
+  cursor: pointer; /* Иконка указателя/руки */
+  float: left; /* Выстраиваем кнопки рядом друг с другом */
+  margin-top: 50px;
+  margin-left: 75px;
+  color: #222;
+  font: bold 25px Arial;
+}
+
+.startbtn{
+  text-align: center; 
+  background-color: #04AA6D; /* Зеленый фон */
+  border: 1px solid green; /* Зеленая рамка */
+  color: white; /* Белый текст */
+  padding: 0px 50px; /* Некоторый отступ */
+  cursor: pointer; /* Иконка указателя/руки */
+  float: left; /* Выстраиваем кнопки рядом друг с другом */
+  margin-top: 50px;
+  margin-left: 75px;
+  color: #222;
+  font: bold 25px Arial;
+}
+
+
+
+[data-hint] {
+  position: relative;
+  cursor: hint;
+}
+
+[data-hint]::after {
+
+    width: 300px;
+    color: #FFFFFF;
+    background-color: rgba(0,0,0,.7);
+    border-radius: 6px;
+    padding: 0px;
+    content: attr(data-hint);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 2em;
+    position:fixed;
+    top: -5px;
+    left: 230%;
+    transform: translate(-50%, -5%);
+    pointer-events: none;
+}
+
+[data-hint]:hover::after {
+    opacity: 1;
+}
