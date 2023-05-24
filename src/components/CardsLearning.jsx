@@ -63,13 +63,13 @@ function CardsLearning(props) {
             <br />
             <br />
             <Button className="cardsButton" onClick={() => setFlip(!flip)}>
-              Вернуться к предыдущему
+              Перевернуть
             </Button>
             <br />
 
             {step == len - 1 ? (
               <Link to="/resultlear">
-                <Button className="cardsButton">Узнать результат</Button>
+                <Button className="cardsButton">Результат</Button>
               </Link>
             ) : (
               <>  
@@ -77,7 +77,7 @@ function CardsLearning(props) {
                   className="cardsButton"
                   onClick={() => handleButtonClick()}
                 >
-                  Перейти к следующему
+                  Дальше
                 </Button>
               </>
             )}
