@@ -13,11 +13,9 @@ function Resultlear()  {
     return (
       <div>
         <h1 className="heading">Поздравляем, изучение пройдено!</h1>
-        <div className="btn-group">
           <div className="divModes">
             <Button onClick={handleClick}>Выход</Button>
           </div>
-        </div>
       </div>
     );
 }
