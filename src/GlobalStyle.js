@@ -8,7 +8,7 @@ import {
 
 const DocumentStyle = createGlobalStyle`
     html:root {
-        min-height: 200vh;
+        min-height: 100vh;
         color: ${text};
         background-color: ${background};
         background-image: ${gradient};
