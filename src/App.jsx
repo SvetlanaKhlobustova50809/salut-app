@@ -9,7 +9,6 @@ import { useTransition, animated } from '@react-spring/web'
 import Evolves from "./components/Evolves"
 import Units from "./components/Units"
 import CardsLearning from "./components/CardsLearning"
-import Modes from "./components/Modes"
 import Resultlear from "./components/Resultlear"
 import { BrowserRouter as Router,Route,Routes,useLocation } from 'react-router-dom';
 import "./App.css";
@@ -17,13 +16,13 @@ import "./App.css";
 
 
 const initializeAssistant = (getState/*: any*/) => {
-  //if (process.env.NODE_ENV === "development") {
-    //return createSmartappDebugger({
-      //token: process.env.REACT_APP_TOKEN ?? "",
-      //initPhrase: `Запусти ${process.env.REACT_APP_SMARTAPP}`,
-      //getState,
-    //});
- // }
+  if (process.env.NODE_ENV === "development") {
+    return createSmartappDebugger({
+      token: process.env.REACT_APP_TOKEN ?? "",
+      initPhrase: `Запусти ${process.env.REACT_APP_SMARTAPP}`,
+      getState,
+    });
+  }
   return createAssistant({ getState });
 };
 
@@ -157,11 +156,6 @@ export class App extends React.Component {
               <Units 
                   onUnit={ (note)=>{this.unit_choose({ type: "unit_choose", note }); } }
                   onChangeUn = {(this.state)}
-                  />} />
-              <Route path="/modes" element={
-              <Modes
-              onModes={ (note)=>{this.mode_choose({ type: "mode_choose", note }); } }
-              onChangeMode = {(this.state)}
                   />} />
               <Route path="/learning" render={this.state} element={
               <CardsLearning 
