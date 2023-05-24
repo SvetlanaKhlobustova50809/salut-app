@@ -25,9 +25,6 @@ export class Evolves extends React.Component {
     return (
       <div>
         <h1 className="heading">Выбери свой Evolve</h1>
-        <Button data-hint="Чтобы начать изучать слова нужно сказать команду 'Запусти английский в мисис' и выбрать evolve, unit и нажать start.">
-          Помощь
-        </Button>
         <div className="btn-group">
           {[1, 2, 3, 4, 5, 6].map((num) => (
             <Link to="/Unit">
