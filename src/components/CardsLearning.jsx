@@ -47,8 +47,7 @@ function CardsLearning(props) {
       );
     } 
   return (
-    <div className="outer-div">
-      <div className="inner-div">
+    <div className="divModes">
         <ReactCardFlip isFlipped={flip} flipDirection="vertical">
           <div className="cardsOff">
             {repetitions[step].title}
@@ -83,7 +82,6 @@ function CardsLearning(props) {
             )}
           </div>
         </ReactCardFlip>
-      </div>
     </div>
   );
 }
