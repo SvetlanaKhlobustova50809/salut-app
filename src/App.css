@@ -42,7 +42,7 @@
   background-color: #04AA6D; /* Зеленый фон */
   border: 1px solid green; /* Зеленая рамка */
   color: white; /* Белый текст */
-  padding: 150px 50px; /* Некоторый отступ */
+  padding: 50px 50px; /* Некоторый отступ */
   cursor: pointer; /* Иконка указателя/руки */
   float: left; /* Выстраиваем кнопки рядом друг с другом */
   margin-top: 50px;
