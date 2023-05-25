@@ -33,10 +33,7 @@ export class Evolves extends React.Component {
             </Link>
           ))}
         </div>
-<h1 className="heading"> </h1>
-<h1 className="heading"> </h1>
-<h1 className="heading"> </h1>
-<h1 className="heading"> </h1>
+        <div style="height:10px; width:100%"></div>
       </div>
     );
   }
