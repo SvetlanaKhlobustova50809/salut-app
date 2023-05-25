@@ -33,7 +33,7 @@ export class Evolves extends React.Component {
             </Link>
           ))}
         </div>
-        <div style="height:10px; width:100%"></div>
+        <div>   </div>
       </div>
     );
   }
