@@ -20,6 +20,10 @@ console.log(data)
     return json_data
   }
 
+function handleClick() {
+  window.location.href = '/unit';
+}
+
 function CardsLearning(props) { 
   let evolve = "evolve_1";
   let unit = "unit_1";
@@ -48,6 +52,9 @@ function CardsLearning(props) {
     } 
   return (
     <div className="divModes">
+            <div className="divModes">
+          <Button onClick={() => handleClick()}>Назад</Button>
+        </div>
         <ReactCardFlip isFlipped={flip} flipDirection="vertical">
           <div className="cardsOff">
             {repetitions[step].title}
