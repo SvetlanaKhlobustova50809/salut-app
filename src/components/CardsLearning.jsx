@@ -1,96 +1,55 @@
-import React from "react";
-import { useState } from "react";
-import { Button, h1 } from "@salutejs/plasma-ui";
-import { Link } from "react-router-dom";
-import ReactCardFlip from "react-card-flip";
+import React from 'react';
+import { useState } from 'react';
+import {Button} from '@salutejs/plasma-ui';
+import { Link } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
 
-let data = require('./data.json');
-console.log(data)
-  function get_data(evolve, unit){
-    const result = data[evolve][unit];
-    let json_data = []
-    for (let i = 0; i < result.length - 2; i+=2 ) {
-      var newDict = {
-        "title": result[i],
-        "correct": result[i+1]
-      };
-        json_data.push(newDict)
-    }
-    return json_data
-  }
-
 function handleClick() {
-  window.location.href = '/unit';
+  window.location.href = '/';
 }
 
-function CardsLearning(props) { 
-  let evolve = "evolve_1";
-  let unit = "unit_1";
-  console.log("cardslearning", props.onLearn);
-  if (props.onLearn.notes[0].title != "no" && props.onLearn.notes[0].title!= Object){
-  evolve = "evolve_" + String(props.onLearn.notes[0].title);
-  }
-  if (props.onLearn.notes[1].title != "no"&& props.onLearn.notes[1].title!= Object){
-  unit = "unit_" + String(props.onLearn.notes[1].title);
-  }
-  
-  const repetitions = get_data(evolve, unit);
-  const [step, setStep] = useState(0);
-  const repetition = repetitions[step]; 
-  const len = repetitions.length;
+export class Units extends React.Component {
 
-  const [flip, setFlip] = useState(false);
-  const handleButtonClick = () => {
-    setFlip(!flip);
-    setStep(step + 1);
-  };
-  if (props.onLearn.notes.length > 3 && props.onLearn.notes[3].title!= "no" && props.onLearn.notes[3].title!= Object){
+  constructor (props) {
+    super(props)
+    this.state = {
+      note: '',
+    }
+  }
+ 
+
+  render () {
+    const { onUnit } = this.props;
+    const { onChangeUn } = this.props;
+    
+    if (this.props.onChangeUn.notes[1].title != "no" && this.props.onChangeUn.notes[0].title != Object) {
+      console.log(this.props.onChangeUn.notes[1].title);
+      return <Navigate to="/learning"/>;
+    }
     return (
-      <Navigate to="/Evolve" />
-      );
-    } 
-  return (
-    <div className="divModes">
-                <div className="divModes">
+      <div>
+        <h1 className="heading">Выбери свой раздел</h1>
+                    <div className="divModes">
           <Button onClick={() => handleClick()}>Назад</Button>
         </div>
-        <ReactCardFlip isFlipped={flip} flipDirection="vertical">
-          <div className="cardsOff">
-            {repetitions[step].title}
-            <br />
-            <br />
-            <Button className="cardsButton" onClick={() => setFlip(!flip)}>
-              Узнать перевод
-            </Button>
-          </div>
-          <div className="cardsOn">
-            {repetitions[step].correct}
-            <br />
-            <br />
-            <Button className="cardsButton" onClick={() => setFlip(!flip)}>
-              Перевернуть
-            </Button>
-            <br />
-
-            {step == len - 1 ? (
-              <Link to="/resultlear">
-                <Button className="cardsButton">Результат</Button>
-              </Link>
-            ) : (
-              <>  
-                <Button
-                  className="cardsButton"
-                  onClick={() => handleButtonClick()}
-                >
-                  Дальше
-                </Button>
-              </>
-            )}
-          </div>
-        </ReactCardFlip>
-    </div>
-  );
+        <div className="btn-group2">
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((num) => (
+            <Link to="/learning">
+              <Button
+                key={num}
+                onClick={() => this.props.onUnit(num )} 
+              >
+                {num}
+              </Button>
+            </Link>
+          ))}
+        </div>
+<div class="background">
+    <div class="transparent">Прозрачный текст</div>
+ <div class="transparent">Прозрачный текст</div>
+</div>
+      </div>
+    );
+  }
 }
-
-export default CardsLearning;
+export default Units;
