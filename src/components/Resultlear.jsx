@@ -13,9 +13,11 @@ function Resultlear()  {
     return (
       <div>
         <h1 className="heading">Поздравляем, изучение пройдено!</h1>
-        <Button data-hint="Чтобы начать изучать слова нужно сказать команду 'Запусти английский в мисис' и выбрать уровень и раздел.">
-          Помощь
-        </Button>
+        <div className="divModes">
+          <Button onClick={() => handleClick()}>Назад</Button>
+        </div>
+        <p>   </p>
+        <p>   </p>
         <div className="btn-group">
           <div className="divModes">
             <Button onClick={handleClick}>Выход</Button>
