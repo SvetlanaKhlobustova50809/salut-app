@@ -33,21 +33,9 @@ export class Evolves extends React.Component {
             </Link>
           ))}
         </div>
-        <p>
-          {/* t/ */}
-        </p>
-        <p>
-          {/* t/ */}
-        </p>
-        <p>
-          {/* t/ */}
-        </p>
-        <p>
-          {/* t/ */}
-        </p>
-        <p>
-          {1}
-        </p>
+<div class="background">
+    <div class="transparent">Прозрачный текст</div>
+</div>
       </div>
     );
   }
