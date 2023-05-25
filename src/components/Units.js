@@ -1,37 +1,38 @@
-import React from 'react';
-import { useState } from 'react';
-import {Button} from '@salutejs/plasma-ui';
-import { Link } from 'react-router-dom';
-import { Navigate } from 'react-router-dom';
+import React from "react";
+import { useState } from "react";
+import { Button } from "@salutejs/plasma-ui";
+import { Link } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 export class Units extends React.Component {
-
-  constructor (props) {
-    super(props)
+  constructor(props) {
+    super(props);
     this.state = {
-      note: '',
-    }
+      note: "",
+    };
   }
- 
 
-  render () {
+  render() {
     const { onUnit } = this.props;
     const { onChangeUn } = this.props;
-    
-    if (this.props.onChangeUn.notes[1].title != "no" && this.props.onChangeUn.notes[0].title != Object) {
+
+    if (
+      this.props.onChangeUn.notes[1].title != "no" &&
+      this.props.onChangeUn.notes[0].title != Object
+    ) {
       console.log(this.props.onChangeUn.notes[1].title);
-      return <Navigate to="/learning"/>;
+      return <Navigate to="/learning" />;
     }
     return (
       <div>
+        <div className="divModes">
+          <Button onClick={(window.location.href = "/")}>Выход</Button>
+        </div>
         <h1 className="heading">Выбери свой Unit</h1>
         <div className="btn-group2">
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((num) => (
             <Link to="/learning">
-              <Button
-                key={num}
-                onClick={() => this.props.onUnit(num )} 
-              >
+              <Button key={num} onClick={() => this.props.onUnit(num)}>
                 {num}
               </Button>
             </Link>
