@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
 
 function handleClick() {
-  window.location.href = '/';
+  window.location.href = '/unit';
 }
 
 export class Units extends React.Component {
