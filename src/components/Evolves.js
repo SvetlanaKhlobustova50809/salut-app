@@ -17,21 +17,19 @@ export class Evolves extends React.Component {
     const { onChangeEv } = this.props;
     console.log("alloevolve", this.props.onChangeEv.notes[0].title);
     if (this.props.onChangeEv.notes[0].title != "no") {
-      return (
-      <Navigate to="/Unit" />
-      );
+      return <Navigate to="/Unit" />;
     }
 
     return (
       <div>
         <h1 className="heading">Выбери свой Evolve</h1>
+        <div className="divModes">
+          <Button onClick={(window.location.href = "/")}>Выход</Button>
+        </div>
         <div className="btn-group">
           {[1, 2, 3, 4, 5, 6].map((num) => (
             <Link to="/Unit">
-              <Button
-                key={num}
-                onClick={() => this.props.onEvolve(num)}
-              >
+              <Button key={num} onClick={() => this.props.onEvolve(num)}>
                 {num}
               </Button>
             </Link>
