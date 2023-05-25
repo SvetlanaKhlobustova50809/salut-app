@@ -4,6 +4,10 @@ import { Button } from "@salutejs/plasma-ui";
 import { Link } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 
+function handleClick() {
+  window.location.href = '/';
+}
+
 export class Units extends React.Component {
   constructor(props) {
     super(props);
@@ -26,7 +30,7 @@ export class Units extends React.Component {
     return (
       <div>
         <div className="divModes">
-          <Button onClick={(window.location.href = "/")}>Выход</Button>
+          <Button onClick={handleClick()}>Назад</Button>
         </div>
         <h1 className="heading">Выбери свой Unit</h1>
         <div className="btn-group2">
