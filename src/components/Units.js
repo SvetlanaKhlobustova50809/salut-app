@@ -28,7 +28,7 @@ export class Units extends React.Component {
     }
     return (
       <div>
-        <h1 className="heading">Выбери свой раздел</h1>
+        <h1 className="heading">Выбери свой Раздел</h1>
                     <div className="divModes">
           <Button onClick={() => handleClick()}>Назад</Button>
         </div>
