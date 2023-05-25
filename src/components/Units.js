@@ -30,7 +30,7 @@ export class Units extends React.Component {
     return (
       <div>
         <div className="divModes">
-          <Button onClick={handleClick()}>Назад</Button>
+          <Button onClick={() => handleClick()}>Назад</Button>
         </div>
         <h1 className="heading">Выбери свой Unit</h1>
         <div className="btn-group2">
