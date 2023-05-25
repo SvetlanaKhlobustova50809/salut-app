@@ -35,6 +35,8 @@ export class Evolves extends React.Component {
         </div>
 <div class="background">
     <div class="transparent">Прозрачный текст</div>
+ <div class="transparent">Прозрачный текст</div>
+ <div class="transparent">Прозрачный текст</div>
 </div>
       </div>
     );
