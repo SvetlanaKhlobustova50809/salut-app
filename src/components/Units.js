@@ -42,6 +42,10 @@ export class Units extends React.Component {
             </Link>
           ))}
         </div>
+<div class="background">
+    <div class="transparent">Прозрачный текст</div>
+ <div class="transparent">Прозрачный текст</div>
+</div>
       </div>
     );
   }
