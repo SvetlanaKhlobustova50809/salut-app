@@ -16,13 +16,6 @@ function Resultlear()  {
         <div className="divModes">
           <Button onClick={() => handleClick()}>Назад</Button>
         </div>
-        <p>   </p>
-        <p>   </p>
-        <div className="btn-group">
-          <div className="divModes">
-            <Button onClick={handleClick}>Выход</Button>
-          </div>
-        </div>
       </div>
     );
 }
