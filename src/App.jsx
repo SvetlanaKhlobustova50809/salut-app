@@ -9,7 +9,7 @@ import Evolves from "./components/Evolves"
 import Units from "./components/Units"
 import CardsLearning from "./components/CardsLearning"
 import Resultlear from "./components/Resultlear"
-import { DrowserRouter as Router, Route,useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Route,useLocation } from "react-router-dom";
 import { Routes } from "react-router-dom";
 
 import "./App.css";
