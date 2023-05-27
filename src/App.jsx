@@ -4,13 +4,14 @@ import {
   createSmartappDebugger,
   createAssistant,
 } from "@salutejs/client";
-import { Navigate } from 'react-router-dom';
 import { useTransition, animated } from '@react-spring/web'
 import Evolves from "./components/Evolves"
 import Units from "./components/Units"
 import CardsLearning from "./components/CardsLearning"
 import Resultlear from "./components/Resultlear"
-import { BrowserRouter as Router,Route,Routes,useLocation } from 'react-router-dom';
+import { Route,useLocation } from "react-router-dom";
+import { Routes } from "react-router-dom";
+
 import "./App.css";
 
 
@@ -21,7 +22,7 @@ const initializeAssistant = (getState/*: any*/) => {
       token: process.env.REACT_APP_TOKEN ?? "",
       initPhrase: `Запусти ${process.env.REACT_APP_SMARTAPP}`,
       getState,
-    });
+    }); 
   }
   return createAssistant({ getState });
 };
@@ -91,21 +92,47 @@ export class App extends React.Component {
       }
     }
   }
+  _send_action(action_id, value) {
+    const data = {
+      action: {
+        action_id: action_id,
+        parameters: {   // значение поля parameters может любым, но должно соответствовать серверной логике
+          value: value, // см.файл src/sc/noteDone.sc смартаппа в Studio Code
+        }
+      }
+    };
+    const unsubscribe = this.assistant.sendData(
+      data,
+      (data) => {   // функция, вызываемая, если на sendData() был отправлен ответ
+        const {type, payload} = data;
+        console.log('sendData onData:', type, payload);
+        unsubscribe();
+      });
+    }
+
   evolve_choose (action) {
     console.log('evolve_choose', action);
+
+    console.log('evolve_choose', action);
+
+    this.props.navigate('/Unit');
+
+    this._send_action('evolve', {'note':action.note} );
     if (action.note != undefined){
-    this.setState({
-        notes: [
-          {
-            title:    action.note,
-          },
-          ...this.state.notes.slice(1),
-        ],
-    })
+      this.setState({
+          notes: [
+            {
+              title:    action.note,
+            },
+            ...this.state.notes.slice(1),
+          ],
+      })
+    }
   }
-}
+
   unit_choose (action) {
-    console.log('unit_choose', action);
+    console.log('unit_choose', action);    
+    this._send_action('unit', {'note':action.note} );
      if (action.note != undefined){
     this.setState({
       notes: [
@@ -145,8 +172,8 @@ export class App extends React.Component {
     console.log('render');
     
     return (
-      <Router>
-            <Routes>
+      <Routes>
+
               <Route path="/" element={ 
               <Evolves 
                   onEvolve={ (note)=>{this.evolve_choose({ type: "evolve_choose", note }); } }
@@ -163,9 +190,8 @@ export class App extends React.Component {
               onLearn = {(this.state)}
               />} />
               <Route path="/resultlear" element={<Resultlear />} />
+              </Routes>
 
-            </Routes>
-      </Router >
     );
   }
 }
