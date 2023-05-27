@@ -1,47 +1,40 @@
-import React from 'react';
-import { useState } from 'react';
-import {Button} from '@salutejs/plasma-ui';
-import { Link } from 'react-router-dom';
-import { Navigate } from 'react-router-dom';
+import React from "react";
+import { useState } from "react";
+import { Button } from "@salutejs/plasma-ui";
+import { Link, Navigate } from "react-router-dom";
 
-function handleClick() {
-  window.location.href = '/';
-}
-
-export class Units extends React.Component {
-
-  constructor (props) {
-    super(props)
+export class Evolves extends React.Component {
+  constructor(props) {
+    super(props);
     this.state = {
-      note: '',
-    }
+      note: "",
+    };
   }
- 
 
-  render () {
-    const { onUnit } = this.props;
-    const { onChangeUn } = this.props;
+  render() {
+    const { onEvolve } = this.props;
+    const { onChangeEv } = this.props;
     
-    if (this.props.onChangeUn.notes[1].title != "no" && this.props.onChangeUn.notes[0].title != Object) {
-      console.log(this.props.onChangeUn.notes[1].title);
-      return <Navigate to="/learning"/>;
+
+    console.log("alloevolve", this.props.onChangeEv.notes[0].title);
+    if (this.props.onChangeEv.notes[0].title != "no") {
+      return (
+      <Navigate to="/Unit" />
+      );
     }
+
     return (
       <div>
-        <h1 className="heading">Выбери свой раздел</h1>
-                    <div className="divModes">
-          <Button onClick={() => handleClick()}>Назад</Button>
-        </div>
-        <div className="btn-group2">
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((num) => (
-
+        <h1 className="heading">Выбери свой уровень</h1>
+      <p>   </p>
+        <div className="btn-group">
+          {[1, 2, 3, 4, 5, 6].map((num) => (
               <Button
                 key={num}
-                onClick={() => this.props.onUnit(num )} 
+                onClick={() => this.props.onEvolve(num)}
               >
                 {num}
               </Button>
-
           ))}
         </div>
 <div class="background">
@@ -52,4 +45,4 @@ export class Units extends React.Component {
     );
   }
 }
-export default Units;
+export default Evolves;
