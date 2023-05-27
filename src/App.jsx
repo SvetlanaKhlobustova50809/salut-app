@@ -9,7 +9,7 @@ import Evolves from "./components/Evolves"
 import Units from "./components/Units"
 import CardsLearning from "./components/CardsLearning"
 import Resultlear from "./components/Resultlear"
-import { Route,useLocation } from "react-router-dom";
+import { DrowserRouter as Router, Route,useLocation } from "react-router-dom";
 import { Routes } from "react-router-dom";
 
 import "./App.css";
@@ -172,6 +172,7 @@ export class App extends React.Component {
     console.log('render');
     
     return (
+      <Router>
       <Routes>
 
               <Route path="/" element={ 
@@ -191,7 +192,7 @@ export class App extends React.Component {
               />} />
               <Route path="/resultlear" element={<Resultlear />} />
               </Routes>
-
+      </Router>
     );
   }
 }
