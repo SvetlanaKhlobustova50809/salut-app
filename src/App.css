@@ -9,54 +9,45 @@
   text-transform: uppercase;
 } */
 
-@media (max-width: 378px) {
+@media (max-width: 400px) {
   .btn-group button {
     margin-left: 33%;
   }
 }
 
-@media (min-width: 378px) and (max-width: 429px) {
+@media (min-width: 400px) and (max-width: 429px) {
   .btn-group button {
-    margin-left: 15%;
+    margin-left: 13%;
   }
 }
 
 @media (min-width: 429px) and (max-width: 500px) {
   .btn-group button {
-    margin-left: 17%;
+    margin-left: 15%;
   }
 }
 
 @media (min-width: 500px) and (max-width: 550px) {
   .btn-group button {
-    margin-left: 20%;
+    margin-left: 17%;
   }
 }
 
 @media (min-width: 550px) and (max-width: 600px) {
   .btn-group button {
-    margin-left: 10%;
-  }
-  body {
-    overflow-y: hidden;
+    margin-left: 8%;
   }
 }
 
 @media (min-width: 600px) and (max-width: 688px) {
   .btn-group button {
-    margin-left: 12%;
-  }
-  body {
-    overflow-y: hidden;
+    margin-left: 10%;
   }
 }
 
 @media (min-width: 688px) and (max-width: 800px) {
   .btn-group button {
-    margin-left: 14%;
-  }
-  body {
-    overflow-y: hidden;
+    margin-left: 12%;
   }
 }
 
@@ -64,26 +55,17 @@
   .btn-group button {
     margin-left: 5%;
   }
-  body {
-    overflow-y: hidden;
-  }
 }
 
 @media (min-width: 850px) and (max-width: 900px) {
   .btn-group button {
     margin-left: 3%;
   }
-  body {
-    overflow-y: hidden;
-  }
 }
 
 @media (min-width: 850px) and (max-width: 1300px) {
   .btn-group button {
     margin-left: 75px;
-  }
-  body {
-    overflow-y: hidden;
   }
 }
 
@@ -181,7 +163,7 @@
   min-width: 50%;
   min-height: 50vh;
   background: #a6c19d;
-  font: bold 5vh Arial;
+  font: bold 7vh Arial;
   color: green;
   border-radius: 4px;
   padding: 2vh;
@@ -196,7 +178,7 @@
   min-width: 50%;
   min-height: 30vh;
   background: #61a4e7;
-  font: bold 5vh Arial;
+  font: bold 7vh Arial;
   color: blue;
   padding: 2vh;
   text-align: center;
@@ -298,9 +280,6 @@ input[type=button] {
 }
 
 @media (min-height: 750px) and (max-height: 1050px) {
-  body {
-    overflow-y: hidden;
-  }
   .back{
     font: bold 25px Arial;
   }
