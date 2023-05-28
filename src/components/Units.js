@@ -29,7 +29,7 @@ export class Units extends React.Component {
     return (
       <div>
         <h1 className="heading">Выбери свой раздел</h1>
-                    <div className="divModes">
+                    <div className="back">
           <Button onClick={() => handleClick()}>Назад</Button>
         </div>
         <div className="btn-group2">
