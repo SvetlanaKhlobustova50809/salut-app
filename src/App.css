@@ -147,11 +147,12 @@
 
 .btn-group2 button {
   text-align: center;
-  min-width: 20vh;
-  min-height: 15vh;
+  min-width: 25vh;
+  min-height: 10vh;
   background-color: rgb(186, 126, 229); /* Зеленый фон */
   color: white;
   font: bold 3vh Arial;
+  margin-top: 2vh;
 }
 
 /* Добавляем фон при наведении курсора */
@@ -160,14 +161,14 @@
 }
 
 .cardsOff {
-  min-width: 50%;
-  min-height: 30vh;
+  min-width: 40%;
+  min-height: 25vh;
   background: #a6c19d;
   width: 250px;
   overflow-wrap: break-word;  
   word-wrap: break-word; 
   word-break: break-word;
-  font: bold 6vh Arial;
+  font: bold 5vh Arial;
   color: green;
   border-radius: 4px;
   padding: 2vh;
@@ -179,15 +180,15 @@
 }
 
 .cardsOn {
-  min-width: 50%;
-  min-height: 30vh;
+  min-width: 40%;
+  min-height: 25vh;
   width: 250px;
   overflow-wrap: break-word;
   word-wrap: break-word;
   word-break: break-word;
   background: #61a4e7;
   white-space: normal;
-  font: bold 6vh Arial;
+  font: bold 5vh Arial;
   color: blue;
   padding: 2vh;
   text-align: center;
