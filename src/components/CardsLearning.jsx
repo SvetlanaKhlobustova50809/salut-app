@@ -51,7 +51,7 @@ function CardsLearning(props) {
       );
     } 
   return (
-    <div className="divModes">
+    <div >
             <div className="divModes">
           <Button onClick={() => handleClick()}>Назад</Button>
         </div>
