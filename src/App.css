@@ -9,15 +9,20 @@
   text-transform: uppercase;
 }
 
+
+
 .btn-group button {
+
   background-color: #04AA6D; /* Зеленый фон */
   border: 1px solid green; /* Зеленая рамка */
   color: white; /* Белый текст */
   padding: 50px 50px; /* Некоторый отступ */
   cursor: pointer; /* Иконка указателя/руки */
-  float: left; /* Выстраиваем кнопки рядом друг с другом */
+   /* Выстраиваем кнопки рядом друг с другом */
   margin-top: 50px;
-  margin-left: 75px;
+  margin-left: 25%;
+  float: left;
+
   color: #222;
   font: bold 25px Arial;
 }
@@ -46,7 +51,7 @@
   cursor: pointer; /* Иконка указателя/руки */
   float: left; /* Выстраиваем кнопки рядом друг с другом */
   margin-top: 50px;
-  margin-left: 75px;
+  margin-left: 25%;
   color: #222;
   font: bold 25px Arial;
 
