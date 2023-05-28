@@ -21,6 +21,7 @@
    /* Выстраиваем кнопки рядом друг с другом */
   margin-top: 50px;
   margin-left: 50%;
+  margin-right: 50%;
   float: left;
 
   color: #222;
@@ -52,6 +53,7 @@
   float: left; /* Выстраиваем кнопки рядом друг с другом */
   margin-top: 50px;
   margin-left: 50%;
+  margin-right: 50%;
   color: #222;
   font: bold 25px Arial;
 
