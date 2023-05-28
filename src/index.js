@@ -4,11 +4,20 @@ import {DeviceThemeProvider} from '@salutejs/plasma-ui/components/Device'; // Т
                                                                            // от типа устройства
 import {GlobalStyle} from './GlobalStyle'; // Тема оформления (цветовая схема)
 import App from './App';
+import { BrowserRouter as Router, useNavigate } from "react-router-dom";
+// import { Routes } from "react-router-dom";
+
+function AppWithNavigation(props) {
+  const navigate = useNavigate();
+  return <App navigate={navigate} />
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <DeviceThemeProvider>
     <GlobalStyle/>
-    <App/>
+    <Router>
+    <AppWithNavigation/>
+    </Router >
   </DeviceThemeProvider>
 );
