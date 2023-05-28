@@ -64,46 +64,32 @@ function CardsLearning(props) {
       <div className="btn-group1">
         <Button onClick={() => handleClick()}>Назад</Button>
       </div>
-      <ReactCardFlip isFlipped={flip} flipDirection="vertical">
-        <div className="cardsOff">
-          {repetitions[step].title}
-          <br />
-          <br />
-          <div className="btn-group2">
+      <div className="btn-group2">
+        <ReactCardFlip isFlipped={flip} flipDirection="vertical">
+          <div className="cardsOff">
+            {repetitions[step].title}
+            <br />
+            <br />
             <Button onClick={() => setFlip(!flip)}>Узнать перевод</Button>
           </div>
-        </div>
-        <div className="cardsOn">
-          {repetitions[step].correct}
-          <br />
-          <br />
-          <div className="btn-group2">
-            <Button className="btn-group2" onClick={() => setFlip(!flip)}>
-              Перевернуть
-            </Button>
+          <div className="cardsOn">
+            {repetitions[step].correct}
+            <br />
+            <br />
+            <Button onClick={() => setFlip(!flip)}>Перевернуть</Button>
+            <br />
+            {step == len - 1 ? (
+              <Link to="/resultlear">
+                <Button>Результат</Button>
+              </Link>
+            ) : (
+              <>
+                <Button onClick={() => handleButtonClick()}>Дальше</Button>
+              </>
+            )}
           </div>
-          <br />
-
-          {step == len - 1 ? (
-            <Link to="/resultlear">
-              <div className="btn-group2">
-                <Button className="btn-group2">Результат</Button>
-              </div>
-            </Link>
-          ) : (
-            <>
-              <div className="btn-group2">
-                <Button
-                  className="btn-group2"
-                  onClick={() => handleButtonClick()}
-                >
-                  Дальше
-                </Button>
-              </div>
-            </>
-          )}
-        </div>
-      </ReactCardFlip>
+        </ReactCardFlip>
+      </div>
     </div>
   );
 }
