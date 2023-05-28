@@ -20,8 +20,7 @@
   cursor: pointer; /* Иконка указателя/руки */
    /* Выстраиваем кнопки рядом друг с другом */
   margin-top: 50px;
-  margin-left: 50%;
-  margin-right: 50%;
+  margin-left: 50%-25px;
   float: left;
 
   color: #222;
@@ -52,8 +51,7 @@
   cursor: pointer; /* Иконка указателя/руки */
   float: left; /* Выстраиваем кнопки рядом друг с другом */
   margin-top: 50px;
-  margin-left: 50%;
-  margin-right: 50%;
+  margin-left: 50%-25px;
   color: #222;
   font: bold 25px Arial;
 
