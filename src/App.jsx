@@ -172,7 +172,6 @@ export class App extends React.Component {
     console.log('render');
     
     return (
-      <Router>
       <Routes>
 
               <Route path="/" element={ 
@@ -192,7 +191,6 @@ export class App extends React.Component {
               />} />
               <Route path="/resultlear" element={<Resultlear />} />
               </Routes>
-      </Router>
     );
   }
 }
