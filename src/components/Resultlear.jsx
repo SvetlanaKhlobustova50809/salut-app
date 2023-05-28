@@ -13,7 +13,7 @@ function Resultlear()  {
     return (
       <div>
         <h1 className="heading">Поздравляем, изучение пройдено!</h1>
-        <div className="divModes">
+        <div className="btn-group1">
           <Button onClick={() => handleClick()}>К началу</Button>
         </div>
       </div>
