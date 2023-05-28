@@ -1,4 +1,4 @@
-.c-button {
+/* .c-button {
   display: flex;
   display: inline-block;
   font: 400 11px system-ui;
@@ -7,22 +7,118 @@
   transform: translate(-50%, 0);
   margin-top: 20px;
   text-transform: uppercase;
+} */
+
+@media (max-width: 378px) {
+  .btn-group button {
+    margin-left: 33%;
+  }
 }
 
+@media (min-width: 378px) and (max-width: 429px) {
+  .btn-group button {
+    margin-left: 15%;
+  }
+}
 
+@media (min-width: 429px) and (max-width: 500px) {
+  .btn-group button {
+    margin-left: 17%;
+  }
+}
+
+@media (min-width: 500px) and (max-width: 550px) {
+  .btn-group button {
+    margin-left: 20%;
+  }
+}
+
+@media (min-width: 550px) and (max-width: 600px) {
+  .btn-group button {
+    margin-left: 10%;
+  }
+  body {
+    overflow-y: hidden;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 688px) {
+  .btn-group button {
+    margin-left: 12%;
+  }
+  body {
+    overflow-y: hidden;
+  }
+}
+
+@media (min-width: 688px) and (max-width: 800px) {
+  .btn-group button {
+    margin-left: 14%;
+  }
+  body {
+    overflow-y: hidden;
+  }
+}
+
+@media (min-width: 800px) and (max-width: 850px) {
+  .btn-group button {
+    margin-left: 5%;
+  }
+  body {
+    overflow-y: hidden;
+  }
+}
+
+@media (min-width: 850px) and (max-width: 900px) {
+  .btn-group button {
+    margin-left: 3%;
+  }
+  body {
+    overflow-y: hidden;
+  }
+}
+
+@media (min-width: 850px) and (max-width: 1300px) {
+  .btn-group button {
+    margin-left: 75px;
+  }
+  body {
+    overflow-y: hidden;
+  }
+}
+
+@media (min-width: 1300px) and (max-width: 1500px) {
+  .btn-group button {
+    margin-left: 100px;
+  }
+  body {
+    overflow-y: hidden;
+  }
+}
+
+@media (min-width: 1500px) and (max-width: 1700px) {
+  .btn-group button {
+    margin-left: 125px;
+  }
+  body {
+    overflow-y: hidden;
+  }
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
 
 .btn-group button {
-
-  background-color: #04AA6D; /* Зеленый фон */
+  text-align: center;
+  background-color: #04aa6d; /* Зеленый фон */
   border: 1px solid green; /* Зеленая рамка */
   color: white; /* Белый текст */
   padding: 50px 50px; /* Некоторый отступ */
   cursor: pointer; /* Иконка указателя/руки */
-   /* Выстраиваем кнопки рядом друг с другом */
+  /* Выстраиваем кнопки рядом друг с другом */
   margin-top: 50px;
-  margin-left: 46%;
   float: left;
-
   color: #222;
   font: bold 25px Arial;
 }
@@ -43,149 +139,191 @@
   background-color: #00784a;
 }
 
-.btn-group2 button {
-  background-color: #04AA6D; /* Зеленый фон */
-  border: 1px solid green; /* Зеленая рамка */
-  color: white; /* Белый текст */
-  padding: 50px 50px; /* Некоторый отступ */
-  cursor: pointer; /* Иконка указателя/руки */
-  float: left; /* Выстраиваем кнопки рядом друг с другом */
+.btn-group1{
+  text-align: center;
+  font: bold 3vh Arial;
+}
+
+.btn-group1 button {
+  text-align: center;
+  min-width: 10vh;
+  min-height: 3vh;
+  background-color: #8bbd41; /* Зеленый фон */
   margin-top: 50px;
-  margin-left: 46%;
   color: #222;
-  font: bold 25px Arial;
-
+  font: bold 3vh Arial;
 }
 
-.btn-group2 button:not(:last-child) {
-  border-right: none; /* Исключаем двойную рамку */
+/* Добавляем фон при наведении курсора */
+.btn-group1 button:hover {
+  background-color: #366a1a;
 }
 
-/* Сбрасываем обтекание (clearfix hack) */
-.btn-group2:after {
-  content: "";
-  clear: both;
-  display: table;
+.btn-group2{
+  text-align: center;
+}
+
+.btn-group2 button {
+  text-align: center;
+  min-width: 35vh;
+  min-height: 15vh;
+  background-color: rgb(186, 126, 229); /* Зеленый фон */
+  color: white;
+  font: bold 3vh Arial;
 }
 
 /* Добавляем фон при наведении курсора */
 .btn-group2 button:hover {
-  background-color: #00784a;
+  background-color: #7729c0;
 }
 
 .cardsOff {
-  min-width: 240px;
-  min-height: 200px;
-
+  min-width: 50%;
+  min-height: 50vh;
   background: #a6c19d;
-  font: bold 25px Arial;
+  font: bold 5vh Arial;
   color: green;
   border-radius: 4px;
-  padding: 20px;
+  padding: 2vh;
   text-align: center;
-
-
-  transform: translate(-50%, 50%);
-  position: absolute; 
-  top: 50%; 
+  position: absolute;
+  transform: translate(-50%, 10%);
+  top: 50%;
   left: 50%;
 }
 
 .cardsOn {
-  min-width: 240px;
-  min-height: 200px;
+  min-width: 50%;
+  min-height: 30vh;
   background: #61a4e7;
-  font: bold 25px Arial;
+  font: bold 5vh Arial;
   color: blue;
-  padding: 20px;
-  border-radius: 4px;
+  padding: 2vh;
   text-align: center;
-
-  transform: translate(-50%, 50%);
-  position: absolute; 
-  top: 50%; 
+  position: absolute;
+  transform: translate(-50%, 5%);
+  top: 0%;
   left: 50%;
 }
 
-.cardsButton{
-  width: 120px;
+.outer-div {
   padding: 10px;
-  font-size: 20px;
-  background: #a14490;
-  font-weight: bold;
-  border-radius: 50px;
-  text-align: center;
-  
+}
+.inner-div {
+  margin: auto;
+  width: 300px;
+  height: 100px;
 }
 
-.outer-div
-{
-     padding: 10px;
-}
-.inner-div
-{
-     margin: auto;
-     width: 300px;
-     height: 100px;  
-}
-
-.divModes{
+.divModes {
   margin-left: auto;
   margin-right: auto;
   /* width: 10em; */
   transform: translate(-50%, 50%);
-  position: absolute; 
+  position: absolute;
   left: 50%;
-  
 }
-.back{
-  margin-left: auto;
-  margin-right: auto;
-  width: 6em
+
+body {
+  font-family: monospace;
+}
+input[type=button] {
+  font-family: monospace;
+  font: bold 40px Arial;
+}
+
+.back {
+  text-align: center;
 }
 
 .heading {
-  text-align: center; 
-}
-
-.resbtn{
-  background-color: #04AA6D; /* Зеленый фон */
-  border: 1px solid green; /* Зеленая рамка */
-  color: white; /* Белый текст */
-  padding: 50px 50px; /* Некоторый отступ */
-  cursor: pointer; /* Иконка указателя/руки */
-  float: left; /* Выстраиваем кнопки рядом друг с другом */
-  margin-top: 50px;
-  margin-left: 75px;
-  color: #222;
-  font: bold 25px Arial;
-}
-
-.startbtn{
-  text-align: center; 
-  background-color: #04AA6D; /* Зеленый фон */
-  border: 1px solid green; /* Зеленая рамка */
-  color: white; /* Белый текст */
-  padding: 0px 50px; /* Некоторый отступ */
-  cursor: pointer; /* Иконка указателя/руки */
-  float: left; /* Выстраиваем кнопки рядом друг с другом */
-  margin-top: 50px;
-  margin-left: 75px;
-  color: #222;
-  font: bold 25px Arial;
+  text-align: center;
 }
 
 .background {
-    text-align: center; 
-}    
+  text-align: center;
+}
 .transparent {
-    font-family: Tahoma, sans-serif;
-    font-weight: bold;
-    font-size: 10px;
-    line-height: 150px;
-    text-transform: uppercase;
-    color: #FFF;
-    mix-blend-mode: multiply;
-    display: inline-block;
-    /* text-shadow: 0 0 8px rgba(0,0,0,5), 0 2px 4px rgba(0,0,0,0.7); */
+  font-family: Tahoma, sans-serif;
+  font-weight: bold;
+  font-size: 10px;
+  line-height: 150px;
+  text-transform: uppercase;
+  color: #fff;
+  mix-blend-mode: multiply;
+  display: inline-block;
+  /* text-shadow: 0 0 8px rgba(0,0,0,5), 0 2px 4px rgba(0,0,0,0.7); */
+}
+
+
+
+
+@media (min-width: 1700px) and (max-width: 1900px) {
+  .btn-group1 button{
+    font: bold 30px Arial;
+  }
+  body {
+    overflow-y: hidden;
+  }
+  .heading {
+    font: bold 40px Arial;
+    margin-top: 10px;
+  }
+  .btn-group button {
+    font: bold 40px Arial;
+    margin-left: 150px;
+  }
+
+}
+
+@media (min-width: 1900px) {
+  .btn-group1 button{
+    font: bold 35px Arial;
+  }
+  .back{
+    font: bold 50px Arial;
+  }
+  body {
+    overflow-y: hidden;
+  }
+  .heading {
+    font: bold 50px Arial;
+    margin-top: 10px;
+  }
+  .btn-group button {
+    font: bold 40px Arial;
+    margin-left: 170px;
+  }
+
+}
+
+@media (min-height: 750px) and (max-height: 1050px) {
+  body {
+    overflow-y: hidden;
+  }
+  .back{
+    font: bold 25px Arial;
+  }
+  .heading {
+    font: bold 40px Arial;
+    margin-top: 0px;
+  }
+  .btn-group button {
+    font: bold 40px Arial;
+  }
+}
+@media (min-height: 1050px) and (max-height: 1500px) {
+  body {
+    overflow-y: hidden;
+  }
+  .back{
+    font: bold 30px Arial;
+  }
+  .heading {
+    font: bold 50px Arial;
+    margin-top: 10px;
+  }
+  .btn-group button {
+    font: bold 40px Arial;
+  }
 }
