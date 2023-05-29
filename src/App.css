@@ -92,6 +92,7 @@
 }
 
 .btn-group button {
+  min-width: 14vh;
   text-align: center;
   background-color: #04aa6d; /* Зеленый фон */
   border: 1px solid green; /* Зеленая рамка */
@@ -260,7 +261,7 @@ input[type="button"] {
   }
   .btn-group button {
     font: bold 40px Arial;
-    margin-left: 150px;
+    margin-left: 130px;
   }
 }
 
@@ -280,7 +281,7 @@ input[type="button"] {
   }
   .btn-group button {
     font: bold 40px Arial;
-    margin-left: 170px;
+    margin-left: 150px;
   }
 }
 
