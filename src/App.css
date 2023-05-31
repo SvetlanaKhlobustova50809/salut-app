@@ -92,14 +92,14 @@
 }
 
 .btn-group button {
-  min-width: 14vh;
   text-align: center;
   background-color: #04aa6d; /* Зеленый фон */
   border: 1px solid green; /* Зеленая рамка */
   color: white; /* Белый текст */
   padding: 50px 50px; /* Некоторый отступ */
   cursor: pointer; /* Иконка указателя/руки */
-  /* Выстраиваем кнопки рядом друг с другом */
+  width: 15vh;
+  height: 10vh;
   margin-top: 50px;
   float: left;
   color: #222;
@@ -129,10 +129,11 @@
 
 .btn-group1 button {
   text-align: center;
-  min-width: 10vh;
-  min-height: 3vh;
+  min-width: 8vh;
+  min-height: 2vh;
   background-color: #8bbd41; /* Зеленый фон */
-  margin-top: 50px;
+  margin-top: 5px;
+  margin-left: 10px;
   color: #222;
   font: bold 3vh Arial;
 }
@@ -148,8 +149,8 @@
 
 .btn-group2 button {
   text-align: center;
-  min-width: 25vh;
-  min-height: 10vh;
+  min-width: 15vh;
+  min-height: 5vh;
   background-color: rgb(186, 126, 229); /* Зеленый фон */
   color: white;
   font: bold 3vh Arial;
@@ -161,15 +162,34 @@
   background-color: #7729c0;
 }
 
+.btn-group3 {
+  text-align: center;
+}
+
+.btn-group3 button {
+  text-align: center;
+  min-width: 15vh;
+  min-height: 5vh;
+  background-color: rgb(186, 126, 229); /* Зеленый фон */
+  color: white;
+  font: bold 3vh Arial;
+  margin-top: 20vh;
+}
+
+/* Добавляем фон при наведении курсора */
+.btn-group3 button:hover {
+  background-color: #7729c0;
+}
+
 .cardsOff {
   min-width: 40%;
   min-height: 25vh;
   background: #a6c19d;
   width: 250px;
-  overflow-wrap: break-word;  
-  word-wrap: break-word; 
+  overflow-wrap: break-word;
+  word-wrap: break-word;
   word-break: break-word;
-  font: bold 5vh Arial;
+  font: bold 3vh Arial;
   color: green;
   border-radius: 4px;
   padding: 2vh;
@@ -189,7 +209,7 @@
   word-break: break-word;
   background: #61a4e7;
   white-space: normal;
-  font: bold 5vh Arial;
+  font: bold 3vh Arial;
   color: blue;
   padding: 2vh;
   text-align: center;
