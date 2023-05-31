@@ -17,6 +17,9 @@ export class Units extends React.Component {
   }
 
   render() {
+    if(this.props.onChangeUn.notes[0].title !== 'no'){
+      num_evolve = this.props.onChangeUn.notes[0].title;
+    }
     if (
       this.props.onChangeUn.notes[1].title !== "no" &&
       this.props.onChangeUn.notes[0].title !== Object
