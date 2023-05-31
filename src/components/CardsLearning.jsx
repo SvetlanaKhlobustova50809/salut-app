@@ -65,7 +65,7 @@ function CardsLearning(props) {
     setTimeout(() => {
       setStep(step);
       setShowNextCard(true);
-    }, 1000);
+    }, 200);
   };
 
   if (
