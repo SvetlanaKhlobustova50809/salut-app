@@ -31,6 +31,7 @@ function CardsLearning(props) {
   let evolve = "evolve_1";
   let unit = "unit_1";
   console.log("cardslearning", props.onLearn);
+
   if (
     props.onLearn.notes[0].title != "no" &&
     props.onLearn.notes[0].title != Object
@@ -52,10 +53,21 @@ function CardsLearning(props) {
   const len = repetitions.length;
 
   const [flip, setFlip] = useState(false);
+  // const handleButtonClick = (flip, step) => {
+  //   setFlip(flip);
+  //   setStep(step);
+  // };
+
+  const [showNextCard, setShowNextCard] = useState(false);
   const handleButtonClick = (flip, step) => {
     setFlip(flip);
-    setStep(step);
+    setShowNextCard(false);
+    setTimeout(() => {
+      setStep(step);
+      setShowNextCard(true);
+    }, 100);
   };
+
   if (
     props.onLearn.notes.length > 3 &&
     props.onLearn.notes[3].title != "no" &&
@@ -71,35 +83,40 @@ function CardsLearning(props) {
       </div>
       <br />
       <div class="heading">
-          <span>Уровень: {num_evolve} </span>
-          <span>Раздел: {num_unit} </span>
-        </div>
+        <span>Уровень: {num_evolve} </span>
+        <span>Раздел: {num_unit} </span>
+      </div>
       <div className="btn-group2">
         <ReactCardFlip isFlipped={flip} flipDirection="vertical">
-          <div className="cardsOff">
+        <div className={`cardsOff ${showNextCard ? "hide" : ""}`}>
             {repetitions[step].title}
             <br />
             <br />
             <Button onClick={() => setFlip(!flip)}>Узнать перевод</Button>
             <br />
-              {step == len - 1 ? (
-                <Link to="/resultlear">
-                  <Button>Результат</Button>
-                </Link>
-              ) : (
-                <>
-                  <Button onClick={() => handleButtonClick(flip, step + 1)}>Следующее слово</Button>
-                </>
-              )}
-              <br />
-              {step > 0 ? (
-                <>
-                  <Button onClick={() => handleButtonClick(flip, step - 1)}>Предыдущее слово</Button>
-                </>
-              ) : (<></>)}
-
+            {step == len - 1 ? (
+              <Link to="/resultlear">
+                <Button>Результат</Button>
+              </Link>
+            ) : (
+              <>
+                <Button onClick={() => handleButtonClick(flip, step + 1)}>
+                  Следующее слово
+                </Button>
+              </>
+            )}
+            <br />
+            {step > 0 ? (
+              <>
+                <Button onClick={() => handleButtonClick(flip, step - 1)}>
+                  Предыдущее слово
+                </Button>
+              </>
+            ) : (
+              <></>
+            )}
           </div>
-          <div className="cardsOn">
+          <div className={`cardsOn ${showNextCard ? "show" : ""}`}>
             {repetitions[step].correct}
             <br />
             <br />
@@ -111,15 +128,21 @@ function CardsLearning(props) {
               </Link>
             ) : (
               <>
-                <Button onClick={() => handleButtonClick(!flip, step + 1)}>Следующее слово</Button>
+                <Button onClick={() => handleButtonClick(!flip, step + 1)}>
+                  Следующее слово
+                </Button>
               </>
             )}
-              <br />
-              {step > 0 ? (
-                <>
-                  <Button onClick={() => handleButtonClick(!flip, step - 1)}>Предыдущее слово</Button>
-                </>
-              ) : (<></>)}
+            <br />
+            {step > 0 ? (
+              <>
+                <Button onClick={() => handleButtonClick(!flip, step - 1)}>
+                  Предыдущее слово
+                </Button>
+              </>
+            ) : (
+              <></>
+            )}
           </div>
         </ReactCardFlip>
       </div>
