@@ -24,7 +24,7 @@ function get_data(evolve, unit) {
 }
 
 function handleClick() {
-  window.location.href = "/unit";
+  window.location.href = "/";
 }
 
 function CardsLearning(props) {
