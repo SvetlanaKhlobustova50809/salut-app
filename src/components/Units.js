@@ -34,6 +34,7 @@ export class Units extends React.Component {
         <div className="btn-group1">
           <Button onClick={() => handleClick()}>Назад</Button>
         </div>
+          <br />
         <div class="heading">
           <span>Уровень: {unit} </span>
         </div>
