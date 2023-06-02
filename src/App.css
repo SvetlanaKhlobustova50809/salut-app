@@ -57,6 +57,11 @@ button:active {
   box-shadow: none; /* Убираем тень при нажатии */
 }
 
+.btn-group2 button:active::after {
+  /* Убираем псевдоэлемент ::after при нажатии */
+  content: none;
+}
+
 .btn-group2 {
   display: flex;
   flex-wrap: wrap;
