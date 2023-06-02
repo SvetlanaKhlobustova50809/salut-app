@@ -55,11 +55,13 @@ button:active {
 .btn-group2 button:focus {
   outline: none; /* Убираем контур фокуса */
   box-shadow: none; /* Убираем тень при нажатии */
+  background-color: rgb(186, 126, 229);
 }
 
 .btn-group2 button:active::after {
   /* Убираем псевдоэлемент ::after при нажатии */
   content: none;
+  background-color: rgb(186, 126, 229);
 }
 
 .btn-group2 {
