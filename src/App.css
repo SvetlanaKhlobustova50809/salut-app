@@ -90,7 +90,7 @@
 }
 
 .cardsOff {
-  /* backface-visibility: hidden; */
+  backface-visibility: hidden;
   min-width: 45vh;
   min-height: 35vh;
   background: #a6c19d;
@@ -110,6 +110,7 @@
 }
 
 .cardsOn {
+  backface-visibility: hidden;
   min-width: 45vh;
   min-height: 35vh;
   width: 250px;
