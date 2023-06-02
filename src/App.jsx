@@ -9,7 +9,7 @@ import Evolves from "./components/Evolves"
 import Units from "./components/Units"
 import CardsLearning from "./components/CardsLearning"
 import Resultlear from "./components/Resultlear"
-import { BrowserRouter as Router, Route,useLocation } from "react-router-dom";
+import { Route,useLocation } from "react-router-dom";
 import { Routes } from "react-router-dom";
 
 import "./App.css";
@@ -36,7 +36,7 @@ export class App extends React.Component {
     console.log('constructor');
 
     this.state = {
-      notes: [{"title": "no"},{"title": "no"}],
+      notes: [{"title": "no"},{"title": "no"},{"title":"no"}],
     }
 
     this.assistant = initializeAssistant(() => this.getStateForAssistant());
@@ -113,8 +113,6 @@ export class App extends React.Component {
   evolve_choose (action) {
     console.log('evolve_choose', action);
 
-    console.log('evolve_choose', action);
-
     this.props.navigate('/Unit');
 
     this._send_action('evolve', {'note':action.note} );
@@ -148,12 +146,39 @@ export class App extends React.Component {
     console.log('mode_choose', action);
     this.setState({
       notes: [
+        this.state.notes[0],this.state.notes[1],
+        {
+          title:     action.note,
+        },
+        ...this.state.notes.slice(3),
+      ],
+    })
+  }
+  back_unit (action) {
+    console.log('back_unit', action);
+    this.setState({
+      notes: [
         ...this.state.notes,
         {
           title:      action.note,
         },
       ],
     })
+    window.location.href = "/";
+  }
+  back_cards (action) {
+    console.log('back_cards', action);
+    this._send_action('back_cards', {'note':action.note} );
+    this.setState({
+      notes: [
+        this.state.notes[0],this.state.notes[1],
+        {
+          title:     action.note,
+        },
+        ...this.state.notes.slice(3),
+      ],
+    })
+    this.props.navigate('/Unit');
   }
   end (action) {
     console.log('end', action);
@@ -188,9 +213,11 @@ export class App extends React.Component {
               <CardsLearning 
               onLearns={ (note)=>{this.end({ type: "end", note }); } }
               onLearn = {(this.state)}
+              onBackCards = { (note)=>{this.back_cards({ type: "back_cards", note }); } }
               />} />
               <Route path="/resultlear" element={<Resultlear />} />
               </Routes>
+
     );
   }
 }
