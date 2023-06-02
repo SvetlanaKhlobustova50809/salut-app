@@ -54,11 +54,12 @@
   background-color: #7729c0;
 }
 
-/* .btn-group2 button:active,
+.btn-group2 button:active,
 .btn-group2 button:focus {
+    background-color: rgb(186, 126, 229);
   outline: none;
   box-shadow: none;
-} */
+} 
 
 .btn-group2 {
   background-color: rgb(186, 126, 229);
