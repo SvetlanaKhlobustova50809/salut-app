@@ -51,6 +51,12 @@ button:active {
   background-color: #366a1a;
 }
 
+.btn-group2 button:active,
+.btn-group2 button:focus {
+  outline: none; /* Убираем контур фокуса */
+  box-shadow: none; /* Убираем тень при нажатии */
+}
+
 .btn-group2 {
   display: flex;
   flex-wrap: wrap;
