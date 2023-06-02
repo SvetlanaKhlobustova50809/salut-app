@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Button, h1 } from "@salutejs/plasma-ui";
 import { Link } from "react-router-dom";
 import ReactCardFlip from "react-card-flip";
-import { Navigate } from "react-router-dom";
+import { Navigate,useNavigate } from "react-router-dom";
 import { fonts } from "@salutejs/plasma-tokens";
 
 let data = require("./data.json");
@@ -23,11 +23,14 @@ function get_data(evolve, unit) {
   return json_data;
 }
 
-function handleClick() {
-  window.location.href = "/";
-}
 
 function CardsLearning(props) {
+  
+  const navigate = useNavigate();
+  function handleClick() {
+    console.log(props.onBackCards('back'));
+    window.location.href = "/";
+  }
   let evolve = "evolve_1";
   let unit = "unit_1";
   console.log("cardslearning", props.onLearn);
@@ -79,7 +82,7 @@ function CardsLearning(props) {
   return (
     <div>
       <div className="btn-group1">
-        <Button onClick={() => handleClick()}>Назад</Button>
+        <Button onClick={() => handleClick(props)}>Назад</Button>
       </div>
       <br />
       <div class="heading">
