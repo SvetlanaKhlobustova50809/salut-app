@@ -2,6 +2,10 @@
   display: none;
 }
 
+button:active {
+  border-style: outset;
+}
+
 .btn-group {
   display: flex;
   flex-wrap: wrap;
