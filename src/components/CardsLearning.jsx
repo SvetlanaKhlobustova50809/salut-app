@@ -1,20 +1,20 @@
-import React from "react";
-import { useState } from "react";
-import { Button, h1 } from "@salutejs/plasma-ui";
-import { Link } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {Button} from "@salutejs/plasma-ui";
+import {useNavigate, useParams} from "react-router-dom";
 import ReactCardFlip from "react-card-flip";
-import { Navigate,useNavigate } from "react-router-dom";
-import { fonts } from "@salutejs/plasma-tokens";
 
 let data = require("./data.json");
 let num_evolve = 1;
 let num_unit = 1;
-console.log(data);
+
+// console.log(data);
+
 function get_data(evolve, unit) {
+  console.log(`get_data: evolve: ${evolve} unit: ${unit}`);
   const result = data[evolve][unit];
   let json_data = [];
   for (let i = 0; i < result.length; i += 2) {
-    var newDict = {
+    const newDict = {
       title: result[i],
       correct: result[i + 1],
     };
@@ -25,128 +25,120 @@ function get_data(evolve, unit) {
 
 
 function CardsLearning(props) {
-  
+  const {evolve, unit, step: strStep} = useParams();
   const navigate = useNavigate();
-  function handleClick() {
-    console.log(props.onBackCards('back'));
-    window.location.href = "/";
-  }
-  let evolve = "evolve_1";
-  let unit = "unit_1";
-  console.log("cardslearning", props.onLearn);
 
-  if (
-    props.onLearn.notes[0].title != "no" &&
-    props.onLearn.notes[0].title != Object
-  ) {
-    evolve = "evolve_" + String(props.onLearn.notes[0].title);
-    num_evolve = props.onLearn.notes[0].title;
-  }
-  if (
-    props.onLearn.notes[1].title != "no" &&
-    props.onLearn.notes[1].title != Object
-  ) {
-    unit = "unit_" + String(props.onLearn.notes[1].title);
-    num_unit = props.onLearn.notes[1].title;
-  }
+  const evolve_key = "evolve_" + String(evolve);
+  const num_evolve = evolve;
+  const unit_key = "unit_" + String(unit);
+  const num_unit = unit;
 
-  const repetitions = get_data(evolve, unit);
-  const [step, setStep] = useState(0);
-  const repetition = repetitions[step];
+  const step = parseInt(strStep);
+  const repetitions = get_data(evolve_key, unit_key);
   const len = repetitions.length;
+  const word = repetitions[step].title
 
   const [flip, setFlip] = useState(false);
-  // const handleButtonClick = (flip, step) => {
-  //   setFlip(flip);
-  //   setStep(step);
-  // };
 
-  const [showNextCard, setShowNextCard] = useState(false);
-  const handleButtonClick = (flip, step) => {
-    setFlip(flip);
-    setShowNextCard(false);
-    setTimeout(() => {
-      setStep(step);
-      setShowNextCard(true);
-    }, 200);
-  };
+  useEffect(() => {
+    console.log("Unit: useEffect");
+    props.onOpen({ evolve, unit, step, word });
+    return () => {
+    };
+  }, []);
 
-  if (
-    props.onLearn.notes.length > 3 &&
-    props.onLearn.notes[3].title != "no" &&
-    props.onLearn.notes[3].title != Object
-  ) {
-    return <Navigate to="/Evolve" />;
-  }
+  const isLastWord = step >= len - 1;
+  const isFirstWord = step <= 0;
 
-  return (
-    <div>
+  const Header = () => (
+    <>
       <div className="btn-group1">
-        <Button onClick={() => handleClick(props)}>Назад</Button>
+        <Button
+          onClick={() => navigate(-1)}
+        >
+          Назад
+        </Button>
       </div>
-      <br />
-      <div class="heading">
+      <br/>
+      <div className="heading">
         <span>Уровень: {num_evolve} </span>
         <span>Раздел: {num_unit} </span>
       </div>
+    </>
+  )
+
+  const TranslateButton = () => <Button
+    onClick={() => setFlip(!flip)}
+  >
+    Перевернуть карточку
+  </Button>
+
+  const FlipBackButton = () => <Button
+    onClick={() => setFlip(!flip)
+    }>
+    Перевернуть карточку
+  </Button>
+
+  const NextButton = () => <Button
+    // onClick={() => handleButtonClick(flip, step + 1)}
+    onClick={() => navigate(`/evolve/${evolve}/unit/${unit}/step/${step + 1}`)}
+  >
+    Следующее слово
+  </Button>
+
+  const PrevButton = () => <Button
+    // onClick={() => handleButtonClick(flip, step - 1)}
+    onClick={() => navigate(`/evolve/${evolve}/unit/${unit}/step/${step - 1}`)}
+  >
+    Предыдущее слово
+  </Button>
+
+  const ResultButton = () => <Button
+    onClick={() => navigate(`/resultlear`)}
+  >
+    Результат
+  </Button>
+
+  const Group1 = () => (
+    // <div className={`cardsOff ${showNextCard ? "hide" : ""}`}>
+    <div className={`cardsOff`}>
+      {word}
+      <br/>
+      <br/>
+      <TranslateButton/>
+      <br/>
+      {isLastWord ? <ResultButton/> : <NextButton/>}
+      <br/>
+      {isFirstWord ? <></> : <PrevButton/>}
+    </div>
+  )
+
+
+  const Group2 = () => (
+    // <div className={`cardsOn ${showNextCard ? "show" : ""}`}>
+    <div className={`cardsOn`}>
+      {repetitions[step].correct}
+      <br/>
+      <br/>
+      <FlipBackButton/>
+      <br/>
+      {isLastWord ? <ResultButton/> : <NextButton/>}
+      <br/>
+      {isFirstWord ? <></> : <PrevButton/>}
+    </div>
+  )
+
+  return (
+    <div>
+      <Header/>
+
       <div className="btn-group2">
         <ReactCardFlip isFlipped={flip} flipDirection="vertical">
-        <div className={`cardsOff ${showNextCard ? "hide" : ""}`}>
-            {repetitions[step].title}
-            <br />
-            <br />
-            <Button onClick={() => setFlip(!flip)}>Узнать перевод</Button>
-            <br />
-            {step == len - 1 ? (
-              <Link to="/resultlear">
-                <Button>Результат</Button>
-              </Link>
-            ) : (
-              <>
-                <Button onClick={() => handleButtonClick(flip, step + 1)}>
-                  Следующее слово
-                </Button>
-              </>
-            )}
-            <br />
-            {step > 0 ? (
-              <>
-                <Button onClick={() => handleButtonClick(flip, step - 1)}>
-                  Предыдущее слово
-                </Button>
-              </>
-            ) : (
-              <></>
-            )}
-          </div>
-          <div className={`cardsOn ${showNextCard ? "show" : ""}`}>
-            {repetitions[step].correct}
-            <br />
-            <br />
-            <Button onClick={() => setFlip(!flip)}>Перевернуть</Button>
-            <br />
-            {step == len - 1 ? (
-              <Link to="/resultlear">
-                <Button>Результат</Button>
-              </Link>
-            ) : (
-              <>
-                <Button onClick={() => handleButtonClick(!flip, step + 1)}>
-                  Следующее слово
-                </Button>
-              </>
-            )}
-            <br />
-            {step > 0 ? (
-              <>
-                <Button onClick={() => handleButtonClick(!flip, step - 1)}>
-                  Предыдущее слово
-                </Button>
-              </>
-            ) : (
-              <></>
-            )}
-          </div>
+
+          <Group1/>
+
+          <Group2/>
+
         </ReactCardFlip>
       </div>
     </div>
