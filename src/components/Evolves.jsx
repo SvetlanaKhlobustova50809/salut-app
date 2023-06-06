@@ -4,11 +4,12 @@ import {useLocation, useNavigate} from "react-router-dom";
 
 // export class Evolves extends React.Component {
 export function Evolves(props) {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+  const {onOpen, onChoose} = props;
 
   useEffect(() => {
     console.log("Evolves: useEffect");
-    props.onOpen();
+    onOpen();
     return () => {
     };
   }, []);
@@ -21,7 +22,7 @@ export function Evolves(props) {
       <div className="btn-group">
         {[1, 2, 3, 4, 5, 6].map((evolve) => (
           <Button
-            onClick={() => navigate(`/evolve/${evolve}/unit`)}
+            onClick={() => onChoose({evolve})}
             key={evolve}
           >
             {evolve}

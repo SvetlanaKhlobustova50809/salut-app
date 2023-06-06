@@ -10,13 +10,12 @@ let evolve = 1;
 // }
 
 function Units(props) {
-
   const {evolve} = useParams();
-  const navigate = useNavigate();
+  const {onOpen, onChoose, onBack} = props;
 
   useEffect(() => {
     console.log("Unit: useEffect");
-    props.onOpen({ evolve });
+    onOpen({ evolve });
     return () => {};
   }, []);
 
@@ -26,8 +25,7 @@ function Units(props) {
 
       <div className="btn-group1">
         <Button
-          // onClick={() => handleClickBack()}
-          onClick={() => navigate(-1)}
+          onClick={() => onBack({evolve})}
         >Назад</Button>
       </div>
 
@@ -40,14 +38,11 @@ function Units(props) {
       <div className="btn-group">
         {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((unit) => (
           <Button
-            onClick={() => navigate(`/evolve/${evolve}/unit/${unit}/step/0`)}
+            onClick={() => onChoose({evolve, unit})}
             key={unit}
           >
             {unit}
           </Button>
-          // <Button key={unit} onClick={() => props.onUnit(unit)}>
-          //   {unit}
-          // </Button>
         ))}
       </div>
       <div className="background">

@@ -5,7 +5,9 @@ import {DeviceThemeProvider} from '@salutejs/plasma-ui/components/Device'; // Т
 import {GlobalStyle} from './GlobalStyle'; // Тема оформления (цветовая схема)
 import App from './App';
 import {BrowserRouter as Router, useNavigate} from "react-router-dom";
-import {customHistory} from "./customHistory";
+import { createBrowserHistory } from "history";
+
+export const customHistory = createBrowserHistory();
 
 // import { Routes } from "react-router-dom";
 

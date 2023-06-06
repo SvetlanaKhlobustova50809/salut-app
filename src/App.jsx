@@ -1,31 +1,19 @@
 import React from "react";
 
-import {createSmartappDebugger, createAssistant} from "@salutejs/client";
-import {useTransition, animated} from "@react-spring/web";
+import {createAssistant, createSmartappDebugger} from "@salutejs/client";
 import Evolves from "./components/Evolves";
 import Units from "./components/Units";
-import CardsLearning from "./components/CardsLearning";
+import CardsLearning, {get_data} from "./components/CardsLearning";
 import Resultlear from "./components/Resultlear";
-import {
-  Navigate,
-  Route,
-  useLocation,
-  useNavigate,
-  Link,
-  useRouteMatch, matchPath,
-} from "react-router-dom";
-import {Routes} from "react-router-dom";
-import { customHistory } from "./customHistory";
+import {Navigate, Route, Routes,} from "react-router-dom";
 
 import "./App.css";
 
 
-// interface State {
-//   notes: [{title: string}, {title: string}, {title: string}];
-//   evolve: string | undefined;
-//   unit: string | undefined;
-// }
-
+function getWordCount({evolve, unit}) {
+  const repetitions = get_data(evolve, unit);
+  return repetitions.length;
+}
 
 const initializeAssistant = (getState /*: any*/) => {
   if (process.env.NODE_ENV === "development") {
@@ -63,7 +51,7 @@ export class App extends React.Component {
     this.assistant.on("start", (event) => {
       console.log(`assistant.on(start)`, event);
       this.assistantReady = true;
-      this.evolveOpened();
+      this.as_started();
     });
   }
 
@@ -88,14 +76,11 @@ export class App extends React.Component {
   }
 
 
-  evolveOpened() {
-    this._send_action("evolve_start_1", {});
-  }
-
   dispatchAssistantAction(action) {
     // console.log("dispatchAssistantAction", action);
     if (action) {
       console.log("dispatchAssistantAction", action);
+
       switch (action.type) {
 
         case "evolve_choose":
@@ -104,11 +89,8 @@ export class App extends React.Component {
         case "unit_choose":
           return this.as_unit_choose(action);
 
-        // case "back":
-        //   return this.back(action);
-
-        // case "mode_choose":
-        //   return this.mode_choose(action);
+        case "back":
+          return this.as_back(action);
 
         // case "learn_translate":
         //   return this.learn_translate(action);
@@ -155,194 +137,140 @@ export class App extends React.Component {
     });
   }
 
+  //
+
+  as_started() {
+    this._send_action("evolve_start_1", {});
+  }
+
+  as_back(action) {
+    console.log("as_back");
+    this.props.navigate(-1)
+  }
+
+  ui_back({evolve}) {
+    console.log("ui_back");
+    this.props.navigate(-1)
+  }
+
+  //
+
+  ui_evolve_loaded() {
+    console.log("ui_evolve_loaded");
+    this._send_action("evolve_start_2", {});
+  }
+
   as_evolve_choose(action) {
     console.log("as_evolve_choose", action);
     const evolve = action.params.evolve || 1;
-
-    this.props.navigate(`/evolve/${evolve}/unit`);
-    // customHistory.push(`/evolve/${evolve}/unit`);
-    // this._send_action("unit", { evolve });
-
-    // this._send_action("evolve", {note: action.note});
-    // if (action.note != undefined) {
-    // this.setState(
-    //   {
-    //     // notes: [
-    //     //   {
-    //     //     title: action.note,
-    //     //   },
-    //     //   ...this.state.notes.slice(1),
-    //     // ],
-    //   },
-    //   () => console.log("evolve_choose: setState:", this.state)
-    // );
-    // }
+    this._evolve_choose({evolve});
   }
 
-  evolve_back(action) {
-    console.log("evolve_back", action);
-    this.props.navigate(-1);
+  ui_evolve_choose({evolve}) {
+    console.log("ui_evolve_choose", {evolve});
+    this._evolve_choose({evolve});
+  }
 
-    // this._send_action("evolve", {note: action.note});
-    // if (action.note != undefined) {
-    // this.setState(
-    //   {
-    //     // notes: [
-    //     //   {
-    //     //     title: action.note,
-    //     //   },
-    //     //   ...this.state.notes.slice(1),
-    //     // ],
-    //   },
-    //   () => console.log("evolve_choose: setState:", this.state)
-    // );
-    // }
+  _evolve_choose({evolve}) {
+    console.log("_evolve_choose", {evolve});
+    this.props.navigate(`/evolve/${evolve}/unit`);
+  }
+
+  //
+
+  ui_unit_loaded({evolve}) {
+    console.log("ui_unit_loaded");
+    this._send_action("unit_start_2", {evolve});
   }
 
   as_unit_choose(action) {
     console.log("as_unit_choose: action:", action);
-    // console.log('as_unit_choose: customHistory', customHistory);
-    // const pathname = customHistory.location.pathname;
-    // console.log('unit_choose: typeof pathname:', typeof pathname, 'pathname:', pathname)
-    //
-    // const pattern = {
-    //   path: "/evolve/:evolve", // /unit/:unit
-    //   exact: false,
-    //   end: false
-    // };
-    // const match = matchPath(pattern, pathname);
-    // // let match = useRouteMatch("/blog/:slug");
-    // console.log("unit_choose: match:", match);
-    //
-    // const evolve = match?.params?.evolve;
-    // // const unit = action.unit || 1;
-    // const unit = action.params.unit || 1;
-    const evolve = parseInt(action.params.evolve);
-    const unit = parseInt(action.params.unit);
-
-    this.props.navigate(`/evolve/${evolve}/unit/${unit}/step/0`);
-    // this._send_action("unit", { evolve, unit });
-
-    // this._send_action("unit", {note: action.note});
-    // if (action.note !== undefined) {
-    //   this.setState(
-    //     {
-    //       notes: [
-    //         this.state.notes[0],
-    //         {
-    //           title: action.note,
-    //         },
-    //         ...this.state.notes.slice(2),
-    //       ],
-    //     },
-    //     () => console.log(this.state)
-    //   );
-    // }
+    this._unit_choose(action.params)
   }
 
-  // mode_choose(action) {
-  //   console.log("mode_choose", action);
-  //   this.setState(
-  //     {
-  //       notes: [
-  //         this.state.notes[0],
-  //         this.state.notes[1],
-  //         {
-  //           title: action.note,
-  //         },
-  //         ...this.state.notes.slice(3),
-  //       ],
-  //     },
-  //     () => console.log(this.state)
-  //   );
-  // }
+  ui_unit_choose(params) {
+    console.log("ui_unit_choose:", params);
+    this._unit_choose(params)
+  }
 
-  // back_unit(action) {
-  //   console.log("back_unit", action);
-  //   this.setState(
-  //     {
-  //       notes: [
-  //         ...this.state.notes,
-  //         {
-  //           title: action.note,
-  //         },
-  //       ],
-  //     },
-  //     () => console.log(this.state)
-  //   );
-  //   // window.location.href = "/";
-  //   this.props.navigate("/");
-  // }
-
-  // back_cards(action) {
-  //   console.log("back_cards", action);
-  //   this._send_action("back_cards", {note: action.note});
-  //   this.setState(
-  //     {
-  //       notes: [
-  //         this.state.notes[0],
-  //         this.state.notes[1],
-  //         {
-  //           title: action.note,
-  //         },
-  //         ...this.state.notes.slice(3),
-  //       ],
-  //     },
-  //     () => console.log(this.state)
-  //   );
-  //   this.props.navigate("/unit");
-  // }
-
-  // learn_translate(action) {
-  //   console.log("learn_translate", action);
-  // }
-
-  as_learn_flip(action) {
-    console.log("as_learn_flip", action);
+  _unit_choose(params) {
+    const {evolve, unit} = params;
+    console.log("_unit_choose:", params);
+    this.props.navigate(`/evolve/${evolve}/unit/${unit}/step/0/flip/0`);
   }
 
   //
+
+  ui_learn_loaded(params) {
+    console.log("ui_learn_loaded", params);
+    this._send_action("learn_start_2", params);
+  }
+
+  ui_learn_next(params) {
+    console.log("ui_learn_next", params);
+    this._learn_next(params);
+  }
 
   as_learn_next(action) {
     console.log("as_learn_next", action);
-    const evolve = parseInt(action.params.evolve);
-    const unit = parseInt(action.params.unit);
-    const step = parseInt(action.params.step);
-    this.do_learn_next({evolve,unit,step});
-  }
-  do_learn_next({evolve,unit,step}) {
-    console.log("do_learn_next", {evolve,unit,step});
-    this.props.navigate(`/evolve/${evolve}/unit/${unit}/step/${step+1}`);
+    this._learn_next(action.params);
   }
 
-  //
+  _learn_next(params) {
+    console.log("_learn_next", params);
+    const {evolve, unit, step, word} = params;
+    let s = parseInt(step);
+    if (s < getWordCount({evolve, unit}) - 1) {
+      s += 1;
+    } else {
+      console.warn('_learn_next: at the end.');
+    }
+    this.props.navigate(`/evolve/${evolve}/unit/${unit}/step/${s + 1}`);
+  }
 
   as_learn_prev(action) {
     console.log("as_learn_prev", action);
-    console.log('as_learn_prev: customHistory', customHistory);
-
-    const pathname = customHistory.location.pathname;
-    console.log('as_learn_prev: typeof pathname:', typeof pathname, 'pathname:', pathname)
-
-    const evolve = parseInt(action.params.evolve);
-    const unit = parseInt(action.params.unit);
-    const step = parseInt(action.params.step);
-
-    this.props.navigate(`/evolve/${evolve}/unit/${unit}/step/${step-1}`);
+    this._learn_prev(action.params)
   }
 
-  as_end(action) {
-    console.log("as_end", action);
-    this.setState({
-      // notes: [
-      //   ...this.state.notes,
-      //   {
-      //     id: Math.random().toString(36).substring(7),
-      //     title: action.note,
-      //     completed: false,
-      //   },
-      // ],
-    });
+  ui_learn_prev(params) {
+    console.log("ui_learn_prev", params);
+    this._learn_prev(params)
+  }
+
+  _learn_prev(params) {
+    console.log("_learn_prev", params);
+    const {evolve, unit, step, word} = params;
+    let s = parseInt(step);
+    if (s > 0) {
+      s -= 1;
+    } else {
+      console.warn('_learn_prev: at the start.')
+    }
+    this.props.navigate(`/evolve/${evolve}/unit/${unit}/step/${s}`);
+  }
+
+
+  as_learn_flip(action) {
+    console.log("as_learn_flip", action);
+    this._learn_flip(action.params);
+  }
+
+  ui_learn_flip(params) {
+    console.log("as_learn_flip", params);
+    this._learn_flip(params);
+  }
+
+  _learn_flip(params) {
+    console.log("_learn_flip", params);
+    const {evolve, unit, step, flip, word} = params;
+    const f = flip == "0" ? 1 : 0;
+    this.props.navigate(`/evolve/${evolve}/unit/${unit}/step/${step}/flip/${f}`);
+  }
+
+  ui_result(params) {
+    console.log("ui_result", params);
+    this.props.navigate(`/resultlear`);
   }
 
   render() {
@@ -363,46 +291,41 @@ export class App extends React.Component {
           path="/"
           element={<Navigate to="/evolve"/>}
         />
+
         <Route
           path="/evolve"
           element={
             <Evolves
-              onOpen={(params) => {
-                // this.evolve_choose({ type: "evolve_choose", note });
-                // this._send_action("back_cards", {});
-                this._send_action("evolve_start_2", params);
-              }}
-              // onEvolve={(note) => {
-              //   this.evolve_choose({type: "evolve_choose", note});
-              // }}
-              // onChangeEv={this.state}
+              onOpen={() => this.ui_evolve_loaded()}
+              onChoose={({evolve}) => this.ui_evolve_choose({evolve})}
             />
           }
         />
+
         <Route
           path="/evolve/:evolve/unit"
           element={
             <Units
-              onOpen={(params) => {
-                // this.evolve_choose({ type: "evolve_choose", note });
-                this._send_action("unit_start_2", params);
-              }}
-              // onUnit={(note) => {
-              //   this.unit_choose({type: "unit_choose", note});
-              // }}
-              // onChangeUn={this.state}
+              onOpen={({evolve}) => this.ui_unit_loaded({evolve})}
+              onBack={(evolve) => this.ui_back(evolve)}
+              onChoose={({evolve, unit}) => this.ui_unit_choose({evolve, unit})}
             />
           }
         />
+
         <Route
-          path="/evolve/:evolve/unit/:unit/step/:step"
+          path="/evolve/:evolve/unit/:unit/step/:step/flip/:flip"
           // render={this.state}
           element={
             <CardsLearning
-              onOpen={(params) => {
-                // this.evolve_choose({ type: "evolve_choose", note });
-                this._send_action("learn_start_2", params);
-              }}
+              onOpen={(params) => this.ui_learn_loaded(params)}
+              onBack={(params) => this.ui_back(params)}
+              onNext={(params) => this.ui_learn_next(params)}
+              onPrev={(params) => this.ui_learn_prev(params)}
+              onFlip={(params) => this.ui_learn_flip(params)}
+              onResult={(params) => this.ui_result(params)}
+
+
               onLearns={(note) => {
                 this.end({type: "end", note});
               }}
@@ -413,6 +336,7 @@ export class App extends React.Component {
             />
           }
         />
+
         <Route
           path="/resultlear"
           element={<Resultlear/>}
