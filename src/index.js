@@ -5,7 +5,7 @@ import {DeviceThemeProvider} from '@salutejs/plasma-ui/components/Device'; // Т
 import {GlobalStyle} from './GlobalStyle'; // Тема оформления (цветовая схема)
 import App from './App';
 import {BrowserRouter as Router, useNavigate} from "react-router-dom";
-import { createBrowserHistory } from "history";
+import {createBrowserHistory} from "history";
 
 export const customHistory = createBrowserHistory();
 
@@ -13,7 +13,12 @@ export const customHistory = createBrowserHistory();
 
 function AppWithNavigation(props) {
   const navigate = useNavigate();
-  return <App navigate={navigate}/>
+  return <App
+    navigate={(...args) => {
+      console.log('AppWithNavigation', args);
+      return navigate(...args);
+    }}
+  />
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

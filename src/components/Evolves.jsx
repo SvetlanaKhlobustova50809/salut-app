@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import {Button} from "@salutejs/plasma-ui";
-import {useLocation, useNavigate} from "react-router-dom";
+// import {useLocation, useNavigate} from "react-router-dom";
 
 // export class Evolves extends React.Component {
 export function Evolves(props) {

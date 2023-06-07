@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import {Button} from "@salutejs/plasma-ui";
 // import { Button } from '@mui/material';
-import {useNavigate, useParams} from "react-router-dom";
+import { useParams} from "react-router-dom";
 
 let evolve = 1;
 
