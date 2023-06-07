@@ -1,48 +1,42 @@
-import React from "react";
-import { useState } from "react";
-import { Button } from "@salutejs/plasma-ui";
-import { Link, Navigate } from "react-router-dom";
+import React, {useEffect} from "react";
+import {Button} from "@salutejs/plasma-ui";
+import {useLocation, useNavigate} from "react-router-dom";
 
-export class Evolves extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      note: "",
+// export class Evolves extends React.Component {
+export function Evolves(props) {
+  // const navigate = useNavigate();
+  const {onOpen, onChoose} = props;
+
+  useEffect(() => {
+    console.log("Evolves: useEffect");
+    onOpen();
+    return () => {
     };
-  }
+  }, []);
 
-  render() {
-    const { onEvolve } = this.props;
-    const { onChangeEv } = this.props;
-    
+  return (
+    <div>
+      <h1 className="heading">Выбери свой уровень</h1>
 
-    console.log("alloevolve", this.props.onChangeEv.notes[0].title);
-    if (this.props.onChangeEv.notes[0].title != "no") {
-      return (
-      <Navigate to="/Unit" />
-      );
-    }
-
-    return (
-      <div>
-        <h1 className="heading">Выбери свой уровень</h1>
-      <p>   </p>
-        <div className="btn-group">
-          {[1, 2, 3, 4, 5, 6].map((num) => (
-              <Button
-                key={num}
-                onClick={() => this.props.onEvolve(num)}
-              >
-                {num}
-              </Button>
-          ))}
-        </div>
-<div class="background">
-    <div class="transparent">Прозрачный текст</div>
- <div class="transparent">Прозрачный текст</div>
-</div>
+      <p></p>
+      <div className="btn-group">
+        {[1, 2, 3, 4, 5, 6].map((evolve) => (
+          <Button
+            onClick={() => onChoose({evolve})}
+            key={evolve}
+          >
+            {evolve}
+          </Button>
+        ))}
       </div>
-    );
-  }
+
+      <div className="background">
+        <div className="transparent">Прозрачный текст</div>
+        <div className="transparent">Прозрачный текст</div>
+      </div>
+    </div>
+  );
+  // }
 }
+
 export default Evolves;
