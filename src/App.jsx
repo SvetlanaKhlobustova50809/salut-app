@@ -148,11 +148,16 @@ export class App extends React.Component {
     this.props.navigate(-1)
   }
 
-  ui_back({evolve}) {
+  ui_back_cards({evolve}) {
     console.log("ui_back");
+    this._send_action("unit_start_1", {});
     this.props.navigate(`/evolve/${evolve}/unit`);  
   }
-
+  ui_back_unit({evolve}) {
+    console.log("ui_back");
+    this._send_action("evolve_start_2", {});
+    this.props.navigate(`/evolve`);  
+  }
   
 
   ui_evolve_loaded() {
@@ -312,7 +317,7 @@ export class App extends React.Component {
           element={
             <Units
               onOpen={({evolve}) => this.ui_unit_loaded({evolve})}
-              onBack={(evolve) => this.ui_back(evolve)}
+              onBackUnit={(evolve) => this.ui_back_unit(evolve)}
               onChoose={({evolve, unit}) => this.ui_unit_choose({evolve, unit})}
             />
           }
@@ -324,7 +329,7 @@ export class App extends React.Component {
           element={
             <CardsLearning
               onOpen={(params) => this.ui_learn_loaded(params)}
-              onBack={(params) => this.ui_back(params)}
+              onBackCards={(params) => this.ui_back_cards(params)}
               onNext={(params) => this.ui_learn_next(params)}
               onPrev={(params) => this.ui_learn_prev(params)}
               onFlip={(params) => this.ui_learn_flip(params)}
