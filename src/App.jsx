@@ -150,10 +150,10 @@ export class App extends React.Component {
 
   ui_back({evolve}) {
     console.log("ui_back");
-    this.props.navigate(-1)
+    this.props.navigate(`/evolve/${evolve}/unit`);  
   }
 
-  //
+  
 
   ui_evolve_loaded() {
     console.log("ui_evolve_loaded");
@@ -218,14 +218,14 @@ export class App extends React.Component {
 
   _learn_next(params) {
     console.log("_learn_next", params);
-    const {evolve, unit, step, word} = params;
+    const {evolve, unit, step, flip, word} = params;
     let s = parseInt(step);
     if (s < getWordCount({evolve, unit}) - 1) {
       s += 1;
     } else {
       console.warn('_learn_next: at the end.');
     }
-    this.props.navigate(`/evolve/${evolve}/unit/${unit}/step/${s + 1}`);
+    this.props.navigate(`/evolve/${evolve}/unit/${unit}/step/${s}/flip/0`);
   }
 
   as_learn_prev(action) {
@@ -240,14 +240,14 @@ export class App extends React.Component {
 
   _learn_prev(params) {
     console.log("_learn_prev", params);
-    const {evolve, unit, step, word} = params;
+    const {evolve, unit, step, flip, word} = params;
     let s = parseInt(step);
     if (s > 0) {
       s -= 1;
     } else {
       console.warn('_learn_prev: at the start.')
     }
-    this.props.navigate(`/evolve/${evolve}/unit/${unit}/step/${s}`);
+    this.props.navigate(`/evolve/${evolve}/unit/${unit}/step/${s}/flip/0`);
   }
 
 
@@ -271,6 +271,11 @@ export class App extends React.Component {
   ui_result(params) {
     console.log("ui_result", params);
     this.props.navigate(`/resultlear`);
+  }
+
+  ui_restart(params) {
+    console.log("ui_restart", params);
+    this.props.navigate(`/`);
   }
 
   render() {
@@ -324,22 +329,15 @@ export class App extends React.Component {
               onPrev={(params) => this.ui_learn_prev(params)}
               onFlip={(params) => this.ui_learn_flip(params)}
               onResult={(params) => this.ui_result(params)}
-
-
-              onLearns={(note) => {
-                this.end({type: "end", note});
-              }}
-              // onLearn={this.state}
-              // onBackCards={(note) => {
-              //   this.back_cards({type: "back_cards", note});
-              //}}
             />
           }
         />
 
         <Route
           path="/resultlear"
-          element={<Resultlear/>}
+          element={<Resultlear
+            onRestart={(params) => this.ui_restart()}
+          />}
         />
       </Routes>
     );
