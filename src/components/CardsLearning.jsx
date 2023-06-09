@@ -151,7 +151,7 @@ export function get_data(evolve, unit) {
 // }
 
 function CardsLearning(props) {
-  const { evolve, unit, flip } = useParams();
+  const { evolve, unit} = useParams();
   const { onOpen, onBack, onNext, onPrev, onFlip, onResult } = props;
 
   // const step = parseInt(strStep);
@@ -160,9 +160,9 @@ function CardsLearning(props) {
   // const word = repetitions[step].title;
 
   useEffect(() => {
-    onOpen({ evolve, unit, flip });
+    onOpen({ evolve, unit});
     return () => {};
-  }, [evolve, unit, flip]);
+  }, [evolve, unit]);
 
   const navigate = useNavigate();
   function handleClick() {
