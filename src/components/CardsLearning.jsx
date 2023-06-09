@@ -151,7 +151,7 @@ export function get_data(evolve, unit) {
 // }
 
 function CardsLearning(props) {
-  const { evolve, unit} = useParams();
+  const { evolve, unit } = useParams();
   const { onOpen, onBack, onNext, onPrev, onFlip, onResult } = props;
 
   // const step = parseInt(strStep);
@@ -166,7 +166,8 @@ function CardsLearning(props) {
 
   const navigate = useNavigate();
   function handleClick() {
-    window.location.href = "/evolve/:evolve/unit";
+    navigate(`/evolve/${evolve}/unit`);
+    // window.location.href = `unit`;
   }
 
   // if (
@@ -208,7 +209,7 @@ function CardsLearning(props) {
   return (
     <div>
       <div className="btn-group1">
-        <Button onClick={() => onBack({ evolve, unit })}>Назад</Button>
+        <Button onClick={() => handleClick()}>Назад</Button>
       </div>
       <br />
       <div class="heading">
