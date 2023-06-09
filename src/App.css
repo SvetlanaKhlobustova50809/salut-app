@@ -36,6 +36,15 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+.step-cards {
+  text-align: center;
+  min-width: 8vh; 
+  min-height: 2vh;
+  margin-top: 5px;
+  margin-left: 10px;
+  color: hsl(0, 100%, 100%);  
+  font: bold 3vh Arial;
+}
 
 .btn-group1 button,
 .btn-group1 a {
