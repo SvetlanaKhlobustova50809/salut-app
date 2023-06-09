@@ -1,17 +1,20 @@
 import React, {useEffect} from "react";
 import {Button} from "@salutejs/plasma-ui";
 // import { Button } from '@mui/material';
-import {useNavigate, useParams} from "react-router-dom";
+import { useParams,useNavigate} from "react-router-dom";
 
 let evolve = 1;
 
-// function handleClickBack() {
-//   window.location.href = "/";
-// }
+
 
 function Units(props) {
   const {evolve} = useParams();
   const {onOpen, onChoose, onBack} = props;
+
+  const navigate = useNavigate();
+  function handleClick() {
+    navigate(`/evolve`);
+  }
 
   useEffect(() => {
     console.log("Unit: useEffect");
@@ -25,7 +28,7 @@ function Units(props) {
 
       <div className="btn-group1">
         <Button
-          onClick={() => onBack({evolve})}
+          onClick={() => handleClick()}
         >Назад</Button>
       </div>
 
