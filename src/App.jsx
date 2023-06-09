@@ -156,7 +156,7 @@ export class App extends React.Component {
   ui_back_unit({evolve}) {
     console.log("ui_back");
     this._send_action("evolve_start_2", {});
-    this.props.navigate(`/`);  
+    this.props.navigate(`/evolve`);  
   }
   
 
