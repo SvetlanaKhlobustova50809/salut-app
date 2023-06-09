@@ -61,6 +61,7 @@ function CardsLearning(props) {
         <span>Уровень: {evolve} </span>
         <span>Раздел: {unit} </span>
       </div>
+      <div className="step-cards">{step + 1}/{len}</div>
       <div className="btn-group2">
         <ReactCardFlip isFlipped={flip} flipDirection="vertical">
           <div className={`cardsOff ${showNextCard ? "hide" : ""}`}>
