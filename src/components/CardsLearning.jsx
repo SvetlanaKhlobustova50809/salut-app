@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "@salutejs/plasma-ui";
-import { useParams, Navigate, useNavigate, Link } from "react-router-dom";
+import { useParams, Navigate, useNavigate } from "react-router-dom";
 import ReactCardFlip from "react-card-flip";
 
 let data = require("./data.json");
@@ -20,7 +20,6 @@ export function get_data(evolve, unit) {
   return json_data;
 }
 
-
 function CardsLearning(props) {
   const { evolve, unit } = useParams();
   const { onOpen } = props;
@@ -34,6 +33,7 @@ function CardsLearning(props) {
   }, [evolve, unit]);
 
   const navigate = useNavigate();
+
   function handleClick() {
     navigate(`/evolve/${evolve}/unit`);
   }
@@ -70,9 +70,7 @@ function CardsLearning(props) {
             <Button onClick={() => setFlip(!flip)}>Узнать перевод</Button>
             <br />
             {step == len - 1 ? (
-              <Link to="/resultlear">
-                <Button>Результат</Button>
-              </Link>
+                <Button onClick={() => navigate(`/resultlear`)}>Результат</Button>
             ) : (
               <>
                 <Button onClick={() => handleButtonClick(flip, step + 1)}>
@@ -98,9 +96,7 @@ function CardsLearning(props) {
             <Button onClick={() => setFlip(!flip)}>Перевернуть</Button>
             <br />
             {step == len - 1 ? (
-              <Link to="/resultlear">
-                <Button>Результат</Button>
-              </Link>
+                <Button onClick={() => navigate(`/resultlear`)}>Результат</Button>
             ) : (
               <>
                 <Button onClick={() => handleButtonClick(!flip, step + 1)}>
