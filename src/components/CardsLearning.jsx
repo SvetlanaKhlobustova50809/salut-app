@@ -22,7 +22,9 @@ export function get_data(evolve, unit) {
   }
   return json_data;
 }
-
+function handleClick() {
+  navigate(`/evolve/${evolve}/unit`);
+}
 
 function CardsLearning(props) {
   const {evolve, unit, step: strStep, flip} = useParams();
@@ -47,12 +49,8 @@ function CardsLearning(props) {
 
   const Header = () => (
     <>
-      <div className="btn-group1">
-        <Button
-          onClick={() => onBack({evolve, unit, step, flip, word})}
-        >
-          Назад
-        </Button>
+       <div className="btn-group1">
+        <Button onClick={() => handleClick()}>Назад</Button>
       </div>
       <br/>
       <div className="heading">
