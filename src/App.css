@@ -8,14 +8,13 @@
   justify-content: center;
 }
 
-.btn-group button,
-.btn-group a  {
+.btn-group button {
   text-align: center;
-  background-color: #04aa6d;
-  border: 1px solid green;
-  padding: 50px 50px;
-  flex: 0 0 150px;
-  margin: 10px;
+  background-color: #04aa6d; 
+  border: 1px solid green; 
+  padding: 50px 50px; 
+  flex: 0 0 150px; 
+  margin: 10px; 
   width: 15vh;
   height: 10vh;
   margin-top: 50px;
@@ -24,8 +23,7 @@
   font: bold 235% Arial;
 }
 
-.btn-group button:hover,
-.btn-group a:hover {
+.btn-group button:hover {
   background-color: #00784a;
 }
 
@@ -35,6 +33,17 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.btn-group1 button {
+  text-align: center;
+  min-width: 8vh;
+  min-height: 2vh;
+  background-color: #8bbd41; 
+  margin-top: 5px;
+  margin-left: 10px;
+  color: #222;
+  font: bold 3vh Arial;
 }
 .step-cards {
   text-align: center;
@@ -46,20 +55,7 @@
   font: bold 3vh Arial;
 }
 
-.btn-group1 button,
-.btn-group1 a {
-  text-align: center;
-  min-width: 8vh;
-  min-height: 2vh;
-  background-color: #8bbd41;
-  margin-top: 5px;
-  margin-left: 10px;
-  color: #222;
-  font: bold 3vh Arial;
-}
-
-.btn-group1 button:hover,
-.btn-group1 a:hover {
+.btn-group1 button:hover {
   background-color: #366a1a;
 }
 
@@ -68,13 +64,11 @@
 } */
 
 .btn-group2 button:active,
-.btn-group2 button:focus,
-.btn-group2 a:active,
-.btn-group2 a:focus {
+.btn-group2 button:focus {
     background-color: rgb(186, 126, 229);
   outline: none;
   box-shadow: none;
-}
+} 
 
 .btn-group2 {
   background-color: rgb(186, 126, 229);
@@ -84,16 +78,15 @@
   text-align: center;
 }
 
-.btn-group2 button,
-.btn-group2 a {
+.btn-group2 button {
   min-width: 15vh;
   min-height: 5vh;
   background-color: rgb(186, 126, 229);
   color: white;
   font: bold 2vh Arial;
   margin-top: 2vh;
-  flex: 0 0 150px;
-  margin: 10px;
+  flex: 0 0 150px; 
+  margin: 10px; 
   width: 25vh;
   height: 10vh;
 }
@@ -102,8 +95,7 @@
   text-align: center;
 }
 
-.btn-group3 button,
-.btn-group3 a {
+.btn-group3 button {
   text-align: center;
   min-width: 15vh;
   min-height: 5vh;
