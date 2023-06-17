@@ -91,6 +91,8 @@ export class App extends React.Component {
 
         case "back":
           return this.as_back(action);
+        case "back_card":
+          return this.ui_back_unit(action);
 
         // case "learn_translate":
         //   return this.learn_translate(action);
@@ -151,6 +153,16 @@ export class App extends React.Component {
   ui_back({evolve}) {
     console.log("ui_back");
     this.props.navigate(-1)
+  }
+  ui_back_evolve({evolve}) {
+    console.log("ui_back_evolve");
+    this._send_action("evolve_start_2", {});
+    this.props.navigate(`/evolve`)
+  }
+  ui_back_unit({evolve}) {
+    console.log("ui_back_unit");
+    this._send_action("unit_start_2", {});
+    this.props.navigate(`/evolve/${evolve}/unit`)
   }
 
   //
@@ -217,6 +229,7 @@ export class App extends React.Component {
   }
 
   _learn_next(params) {
+  
     console.log("_learn_next", params);
     const {evolve, unit, step, flip, word} = params;
     let s = parseInt(step);
@@ -248,6 +261,15 @@ export class App extends React.Component {
       console.warn('_learn_prev: at the start.')
     }
     this.props.navigate(`/evolve/${evolve}/unit/${unit}/step/${s}/flip/0`);
+  }
+  _result(params) {
+    console.log("_result", params);
+    const {evolve, unit, step, flip, word} = params;
+    this.props.navigate(`/resultlear`);
+  }
+  _go_back_card(params){
+    const {evolve, unit, step, flip, word} = params;
+    this.props.navigate(`/evolve/${evolve}/unit`);
   }
 
 
@@ -312,7 +334,7 @@ export class App extends React.Component {
           element={
             <Units
               onOpen={({evolve}) => this.ui_unit_loaded({evolve})}
-              onBack={(evolve) => this.ui_back(evolve)}
+              onBack={(evolve) => this.ui_back_evolve(evolve)}
               onChoose={({evolve, unit}) => this.ui_unit_choose({evolve, unit})}
             />
           }
@@ -324,7 +346,7 @@ export class App extends React.Component {
           element={
             <CardsLearning
               onOpen={(params) => this.ui_learn_loaded(params)}
-              onBack={(params) => this.ui_back(params)}
+              onBack={(params) => this._evolve_choose(params)}
               onNext={(params) => this.ui_learn_next(params)}
               onPrev={(params) => this.ui_learn_prev(params)}
               onFlip={(params) => this.ui_learn_flip(params)}
