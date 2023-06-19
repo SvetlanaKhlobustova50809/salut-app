@@ -173,9 +173,6 @@
   left: 50%;
 }
 
-body {
-  font-family: monospace;
-}
 input[type="button"] {
   font-family: monospace;
   font: bold 40px Arial;
@@ -209,7 +206,4 @@ html,body {
 
 }
 
-body{
-  position: relative;
-}
 
